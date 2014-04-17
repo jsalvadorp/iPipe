@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>D52835C1-62C7-4227-AF5F-2DEC3374227C</string>
+	<key>IDESourceControlProjectName</key>
+	<string>iPipe</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>FE6D38E2-17FA-4B11-90FE-BAC1415A311B</key>
+		<string>https://github.com/jsalvadorp/iPipe.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>iPipe.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>FE6D38E2-17FA-4B11-90FE-BAC1415A311B</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/jsalvadorp/iPipe.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>FE6D38E2-17FA-4B11-90FE-BAC1415A311B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>FE6D38E2-17FA-4B11-90FE-BAC1415A311B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iPipe</string>
+		</dict>
+	</array>
+</dict>
+</plist>

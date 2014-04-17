@@ -23,6 +23,8 @@
 		C4292E4F18E4FAFB0048B63E /* DDMMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4292E4E18E4FAFB0048B63E /* DDMMenuViewController.m */; };
 		C43BFA4B18E5116B001AF893 /* DDMInstruccionesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C43BFA4A18E5116B001AF893 /* DDMInstruccionesViewController.m */; };
 		DA4EF4B818F7500C00C82118 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DA4EF4B618F7500C00C82118 /* Model.xcdatamodeld */; };
+		DAE4EFB3190085A500DC09C0 /* DDMManejoDB.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE4EFB2190085A500DC09C0 /* DDMManejoDB.m */; };
+		DAE4EFB9190097D200DC09C0 /* Tip.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE4EFB8190097D200DC09C0 /* Tip.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,10 @@
 		C43BFA4918E5116B001AF893 /* DDMInstruccionesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMInstruccionesViewController.h; sourceTree = "<group>"; };
 		C43BFA4A18E5116B001AF893 /* DDMInstruccionesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMInstruccionesViewController.m; sourceTree = "<group>"; };
 		DA4EF4B718F7500C00C82118 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		DAE4EFB1190085A500DC09C0 /* DDMManejoDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMManejoDB.h; sourceTree = "<group>"; };
+		DAE4EFB2190085A500DC09C0 /* DDMManejoDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMManejoDB.m; sourceTree = "<group>"; };
+		DAE4EFB7190097D200DC09C0 /* Tip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tip.h; sourceTree = "<group>"; };
+		DAE4EFB8190097D200DC09C0 /* Tip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tip.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +131,10 @@
 				C43BFA4918E5116B001AF893 /* DDMInstruccionesViewController.h */,
 				C43BFA4A18E5116B001AF893 /* DDMInstruccionesViewController.m */,
 				DA4EF4B618F7500C00C82118 /* Model.xcdatamodeld */,
+				DAE4EFB7190097D200DC09C0 /* Tip.h */,
+				DAE4EFB8190097D200DC09C0 /* Tip.m */,
+				DAE4EFB1190085A500DC09C0 /* DDMManejoDB.h */,
+				DAE4EFB2190085A500DC09C0 /* DDMManejoDB.m */,
 				C4292E4D18E4FAFB0048B63E /* DDMMenuViewController.h */,
 				C4292E4E18E4FAFB0048B63E /* DDMMenuViewController.m */,
 			);
@@ -260,6 +270,8 @@
 				C43BFA4B18E5116B001AF893 /* DDMInstruccionesViewController.m in Sources */,
 				C4292E2D18E4FA2F0048B63E /* DDMAppDelegate.m in Sources */,
 				DA4EF4B818F7500C00C82118 /* Model.xcdatamodeld in Sources */,
+				DAE4EFB9190097D200DC09C0 /* Tip.m in Sources */,
+				DAE4EFB3190085A500DC09C0 /* DDMManejoDB.m in Sources */,
 				C4292E2918E4FA2F0048B63E /* main.m in Sources */,
 				C4292E4F18E4FAFB0048B63E /* DDMMenuViewController.m in Sources */,
 			);
