@@ -10,7 +10,11 @@
 #import "DDMManejoDB.h"
 #import <CoreData/CoreData.h>
 
-@implementation DDMManejoDB
+@implementation DDMManejoDB {
+    NSMutableArray *_libros;
+    NSURLConnection *connection;
+    NSMutableData *responseData;
+}
 
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -120,13 +124,78 @@
 }
 
 - (void) descargarTips {
-    static dispatch_once_t safer;
-    dispatch_once (&safer, ^(void)
-                   {
-                       _instancia = [[DDMManejoDB alloc] init];
-                   });  
+    NSString *url = [[NSString alloc] initWithFormat:@"https://www.googleapis.com/books/v1/volumes?q=%@", self.palabraClave];
+    url = [url stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+    
+    NSURLRequest *request =
+    [[NSURLRequest alloc]
+     initWithURL:[[NSURL alloc] initWithString:url]
+     cachePolicy:NSURLRequestReloadIgnoringCacheData
+     timeoutInterval:60];
+    connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    responseData = [[NSMutableData alloc] init];
 }
 
+
+#pragma mark - NSURLConnectionDataDelegate
+
+-(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [responseData appendData:data];
+}
+
+-(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+    
+    int statusCode = [httpResponse statusCode];
+    NSLog(@"status code %d", statusCode);
+    
+    if(statusCode == 404) { // servicio da not found
+        [self.esperaAI stopAnimating];
+        [self despliegaError:@"El servicio se ha caído o no existe."];
+    }
+    
+    responseData.length = 0;
+}
+
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    NSError *error;
+    NSDictionary *datos = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
+    
+    /*if(!_libros)
+     _libros = [[NSMutableArray alloc] init];*/
+    
+    _libros = [datos objectForKey:@"items"];
+    [self.esperaAI stopAnimating];
+    [self.tableView reloadData];
+    
+    if(_libros.count <= 0) {
+        [self despliegaError:@"No hay resultados."];
+    }
+}
+
+#pragma mark - NSURLConnectionDelegate
+
+-(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    // https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Miscellaneous/Foundation_Constants/Reference/reference.html
+    [self.esperaAI stopAnimating];
+    switch (error.code) {
+        case NSURLErrorNetworkConnectionLost:
+        case NSURLErrorNotConnectedToInternet:
+        case NSURLErrorInternationalRoamingOff:
+            [self despliegaError:@"Sin conexión a Internet."];
+            break;
+        case NSURLErrorTimedOut:
+        case NSURLErrorCannotFindHost:
+        case NSURLErrorCannotConnectToHost:
+        case NSURLErrorBadServerResponse:
+            [self despliegaError:@"El servicio se ha caído o no existe."];
+            break;
+            
+        default: // error de otros tipos
+            [self despliegaError:@"Algo salió mal :("];
+            break;
+    }
+}
 
 
 @end

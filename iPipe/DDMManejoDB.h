@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DDMManejoDB : NSObject
+@interface DDMManejoDB : NSObject <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
