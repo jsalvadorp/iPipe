@@ -7,11 +7,14 @@
 //
 
 #import "DDMAppDelegate.h"
+#import "DDMManejoDB.h"
 
 @implementation DDMAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    DDMManejoDB *db = [DDMManejoDB instancia];
+    [db descargarTips];
     /*self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];

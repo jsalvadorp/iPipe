@@ -11,7 +11,7 @@
 #import <CoreData/CoreData.h>
 
 @implementation DDMManejoDB {
-    NSMutableArray *_libros;
+    //NSMutableArray *_libros;
     NSURLConnection *connection;
     NSMutableData *responseData;
 }
@@ -120,19 +120,62 @@
     Tip *nuevoTip = [NSEntityDescription insertNewObjectForEntityForName:@"Tip" inManagedObjectContext:context];
     nuevoTip.tip = ntip;
     nuevoTip.timestamp = [NSNumber numberWithLongLong:tiempo];
+    NSLog(@"tip %@ : %@", nuevoTip.tip, nuevoTip.timestamp);
     [self saveContext];
 }
 
 - (void) descargarTips {
-    NSString *url = [[NSString alloc] initWithFormat:@"https://www.googleapis.com/books/v1/volumes?q=%@", self.palabraClave];
+    
+    long long ultimaActualizacion = 0;
+    // hallar la fecha del tip mas nuevo
+    // https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreData/Articles/cdFetching.html
+    NSManagedObjectContext *context = [self managedObjectContext];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Tip" inManagedObjectContext:context];
+    [request setEntity:entity];
+    
+    // Specify that the request should return dictionaries.
+    [request setResultType:NSDictionaryResultType];
+    
+    // Create an expression for the key path.
+    NSExpression *keyPathExpression = [NSExpression expressionForKeyPath:@"timestamp"];
+    NSExpression *maxExpression = [NSExpression expressionForFunction:@"max:" arguments:[NSArray arrayWithObject:keyPathExpression]];
+    
+    // Create an expression description using the minExpression and returning a date.
+    NSExpressionDescription *expressionDescription = [[NSExpressionDescription alloc] init];
+    
+    // The name is the key that will be used in the dictionary for the return value.
+    [expressionDescription setName:@"ultimaActualizacion"];
+    [expressionDescription setExpression:maxExpression];
+    [expressionDescription setExpressionResultType:NSInteger64AttributeType];
+    
+    // Set the request's properties to fetch just the property represented by the expressions.
+    [request setPropertiesToFetch:[NSArray arrayWithObject:expressionDescription]];
+    
+    // Execute the fetch.
+    NSError *error = nil;
+    NSArray *objects = [_managedObjectContext executeFetchRequest:request error:&error];
+    if (objects == nil) {
+        // Handle the error.
+    }
+    else {
+        if ([objects count] > 0) {
+            NSLog(@"Minimum date: %@", [[objects objectAtIndex:0] valueForKey:@"ultimaActualizacion"]);
+            ultimaActualizacion = [objects[0][@"ultimaActualizacion"] longLongValue];
+        }
+    }
+
+    
+    
+    NSString *url = [[NSString alloc] initWithFormat:@"https://localhost/tip.php?ultimaact=%lld", ultimaActualizacion];
     url = [url stringByReplacingOccurrencesOfString:@" " withString:@"+"];
     
-    NSURLRequest *request =
+    NSURLRequest *urlRequest =
     [[NSURLRequest alloc]
      initWithURL:[[NSURL alloc] initWithString:url]
      cachePolicy:NSURLRequestReloadIgnoringCacheData
      timeoutInterval:60];
-    connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    connection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self];
     responseData = [[NSMutableData alloc] init];
 }
 
@@ -150,8 +193,8 @@
     NSLog(@"status code %d", statusCode);
     
     if(statusCode == 404) { // servicio da not found
-        [self.esperaAI stopAnimating];
-        [self despliegaError:@"El servicio se ha caído o no existe."];
+        //[self.esperaAI stopAnimating];
+        //[self despliegaError:@"El servicio se ha caído o no existe."];
     }
     
     responseData.length = 0;
@@ -159,17 +202,10 @@
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection {
     NSError *error;
-    NSDictionary *datos = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
+    NSArray *datos = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
     
-    /*if(!_libros)
-     _libros = [[NSMutableArray alloc] init];*/
-    
-    _libros = [datos objectForKey:@"items"];
-    [self.esperaAI stopAnimating];
-    [self.tableView reloadData];
-    
-    if(_libros.count <= 0) {
-        [self despliegaError:@"No hay resultados."];
+    for(NSDictionary *d in datos) {
+        [self insertarTip:d[@"tip"] conTiempo:[d[@"timestamp"] longLongValue]];
     }
 }
 
@@ -177,22 +213,22 @@
 
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     // https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Miscellaneous/Foundation_Constants/Reference/reference.html
-    [self.esperaAI stopAnimating];
+    //[self.esperaAI stopAnimating];
     switch (error.code) {
         case NSURLErrorNetworkConnectionLost:
         case NSURLErrorNotConnectedToInternet:
         case NSURLErrorInternationalRoamingOff:
-            [self despliegaError:@"Sin conexión a Internet."];
+      //      [self despliegaError:@"Sin conexión a Internet."];
             break;
         case NSURLErrorTimedOut:
         case NSURLErrorCannotFindHost:
         case NSURLErrorCannotConnectToHost:
         case NSURLErrorBadServerResponse:
-            [self despliegaError:@"El servicio se ha caído o no existe."];
+      //      [self despliegaError:@"El servicio se ha caído o no existe."];
             break;
             
         default: // error de otros tipos
-            [self despliegaError:@"Algo salió mal :("];
+      //      [self despliegaError:@"Algo salió mal :("];
             break;
     }
 }

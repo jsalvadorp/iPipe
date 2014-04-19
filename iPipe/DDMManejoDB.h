@@ -14,5 +14,13 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
+//Metodos para crear e inicializar el singleton
+- (id) init;
++ (DDMManejoDB *) instancia;
+//Metodos para insertar en la BD
+- (void) insertarTip: (NSString *) ntip conTiempo: (long long) tiempo;
+- (void) descargarTips;
+
+
 
 @end
