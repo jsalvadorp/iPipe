@@ -7,6 +7,7 @@
 //
 
 #import "Tip.h"
+#import "Juego.h"
 #import "DDMManejoDB.h"
 #import <CoreData/CoreData.h>
 
@@ -124,6 +125,18 @@
     [self saveContext];
 }
 
+- (void) insertarJuego: (NSString *) nombre
+{
+    NSManagedObjectContext *context = [self managedObjectContext];
+    Juego *nuevoJuego = [NSEntityDescription insertNewObjectForEntityForName:@"Juego" inManagedObjectContext:context];
+    nuevoJuego.nombre = nombre;
+    nuevoJuego.puntos = @0;
+    NSLog(@"tip %@ : %@", nuevoJuego.nombre, nuevoJuego.puntos);
+    [self saveContext];
+}
+
+
+
 - (void) descargarTips {
     
     long long ultimaActualizacion = 0;
@@ -134,40 +147,34 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Tip" inManagedObjectContext:context];
     [request setEntity:entity];
     
-    // Specify that the request should return dictionaries.
+    // se obtendra un diccionario con la timestamp de ultima actualizacion
     [request setResultType:NSDictionaryResultType];
-    
-    // Create an expression for the key path.
     NSExpression *keyPathExpression = [NSExpression expressionForKeyPath:@"timestamp"];
     NSExpression *maxExpression = [NSExpression expressionForFunction:@"max:" arguments:[NSArray arrayWithObject:keyPathExpression]];
-    
-    // Create an expression description using the minExpression and returning a date.
     NSExpressionDescription *expressionDescription = [[NSExpressionDescription alloc] init];
-    
-    // The name is the key that will be used in the dictionary for the return value.
     [expressionDescription setName:@"ultimaActualizacion"];
     [expressionDescription setExpression:maxExpression];
     [expressionDescription setExpressionResultType:NSInteger64AttributeType];
-    
-    // Set the request's properties to fetch just the property represented by the expressions.
     [request setPropertiesToFetch:[NSArray arrayWithObject:expressionDescription]];
     
-    // Execute the fetch.
+    // hacer la query
     NSError *error = nil;
     NSArray *objects = [_managedObjectContext executeFetchRequest:request error:&error];
     if (objects == nil) {
-        // Handle the error.
+        // no se hallaron tips previos, no se hace nada
+        // (ultima actualizacion es 0, es decir 1 enero 1970)
+        // se pediran al servidor todas las actualizaciones
     }
     else {
         if ([objects count] > 0) {
-            NSLog(@"Minimum date: %@", [[objects objectAtIndex:0] valueForKey:@"ultimaActualizacion"]);
+            NSLog(@"Ultima actualizacion: %@", [[objects objectAtIndex:0] valueForKey:@"ultimaActualizacion"]);
             ultimaActualizacion = [objects[0][@"ultimaActualizacion"] longLongValue];
         }
     }
 
     
     
-    NSString *url = [[NSString alloc] initWithFormat:@"https://localhost/tip.php?ultimaact=%lld", ultimaActualizacion];
+    NSString *url = [[NSString alloc] initWithFormat:@"http://localhost/tip.php?timestamp=%lld", ultimaActualizacion];
     url = [url stringByReplacingOccurrencesOfString:@" " withString:@"+"];
     
     NSURLRequest *urlRequest =

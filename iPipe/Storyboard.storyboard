@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DET-YG-WOo">
-                                <rect key="frame" x="103" y="166" width="108" height="53"/>
+                                <rect key="frame" x="90" y="166" width="141" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="JUEGO NUEVO" image="Play.gif"/>
                                 <connections>
@@ -25,7 +25,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWE-aN-c2L">
-                                <rect key="frame" x="104" y="227" width="107" height="55"/>
+                                <rect key="frame" x="92" y="248" width="139" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="CARGAR JUEGO" image="Cargar.gif">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -35,7 +35,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JkM-YX-adP">
-                                <rect key="frame" x="103" y="290" width="108" height="59"/>
+                                <rect key="frame" x="92" y="331" width="139" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="INSTRUCCIONES" image="Instrucciones.gif">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -45,7 +45,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nGg-Y5-bgi">
-                                <rect key="frame" x="104" y="362" width="107" height="58"/>
+                                <rect key="frame" x="92" y="421" width="139" height="73"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="VER RANKING" image="Scores.gif">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -54,15 +54,8 @@
                                     <segue destination="A5I-gl-959" kind="push" id="ZPR-Rs-dmv"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MENÚ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="APR-fg-5o8">
-                                <rect key="frame" x="104" y="20" width="126" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iPipe.gif" translatesAutoresizingMaskIntoConstraints="NO" id="EJn-27-pei">
-                                <rect key="frame" x="80" y="74" width="160" height="66"/>
+                                <rect key="frame" x="27" y="32" width="269" height="110"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -127,10 +120,10 @@
             </objects>
             <point key="canvasLocation" x="1364" y="-146"/>
         </scene>
-        <!--View Controller - Cargar Juego-->
+        <!--Cargar View Controller - Cargar Juego-->
         <scene sceneID="BgL-yl-uCM">
             <objects>
-                <viewController id="zql-nq-fa4" sceneMemberID="viewController">
+                <viewController id="zql-nq-fa4" customClass="DDMCargarViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="e2L-kH-FBu"/>
                         <viewControllerLayoutGuide type="bottom" id="u08-2T-Wi4"/>
@@ -144,7 +137,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="124" id="9eG-Q3-LhH">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="124" id="9eG-Q3-LhH" customClass="DDMCargarCellTableViewCell">
                                         <rect key="frame" x="0.0" y="86" width="320" height="124"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9eG-Q3-LhH" id="gYV-Wp-eLC">
@@ -171,6 +164,11 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imagenCargar" destination="Fa5-8U-vUm" id="5yA-eC-zaL"/>
+                                            <outlet property="nombreLabel" destination="MVO-f7-hzy" id="EbS-LA-u3s"/>
+                                            <outlet property="puntosLabel" destination="XhH-k9-M9W" id="krH-II-j0M"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -233,10 +231,10 @@
             </objects>
             <point key="canvasLocation" x="829" y="86"/>
         </scene>
-        <!--View Controller-->
+        <!--Mjuego Nuevo View Controller-->
         <scene sceneID="WZC-fn-bdw">
             <objects>
-                <viewController id="rHM-a7-8Tt" sceneMemberID="viewController">
+                <viewController id="rHM-a7-8Tt" customClass="DDMjuegoNuevoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="q8N-RV-mDu"/>
                         <viewControllerLayoutGuide type="bottom" id="z71-GB-GvX"/>
@@ -292,6 +290,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Il3-Db-Rd1"/>
+                    <connections>
+                        <outlet property="nombreTF" destination="6T3-kj-k66" id="hFq-ZO-Ect"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DOU-iH-VTe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

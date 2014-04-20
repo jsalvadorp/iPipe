@@ -1,18 +1,18 @@
 //
-//  DDMMenuViewController.m
+//  DDMjuegoNuevoViewController.m
 //  iPipe
 //
-//  Created by Ivan Diaz on 3/27/14.
+//  Created by Isabel Guevara on 4/19/14.
 //  Copyright (c) 2014 Ivan Diaz. All rights reserved.
 //
 
-#import "DDMMenuViewController.h"
+#import "DDMjuegoNuevoViewController.h"
 
-@interface DDMMenuViewController ()
+@interface DDMjuegoNuevoViewController ()
 
 @end
 
-@implementation DDMMenuViewController
+@implementation DDMjuegoNuevoViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,9 +27,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.gif"]];
-    [self.navigationController setNavigationBarHidden:YES];
-
 }
 
 - (void)didReceiveMemoryWarning
