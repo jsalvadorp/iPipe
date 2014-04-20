@@ -8,11 +8,15 @@
 
 #import "DDMCargarViewController.h"
 #import "DDMCargarCellTableViewCell.h"
+#import "DDMManejoDB.h"
+#import "DDMTieneJuego.h"
 #import "Juego.h"
 
+// la primera celda corresponde a un juego nuevo
+// las demas a los juegos guardados
+
 @interface DDMCargarViewController (){
-    
-    NSMutableArray *juegos;
+    NSArray *juegos;
 }
 
 @end
@@ -32,6 +36,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.juegosTV.delegate = self;
+    self.juegosTV.dataSource = self;
+    
+    juegos = [[DDMManejoDB instancia] juegos];
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,19 +57,25 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return juegos.count;
+    return juegos.count + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DDMCargarCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    Juego *j = juegos[indexPath.row];
-    cell.nombreLabel.text = j.nombre;
+    if(indexPath.row == 0) {
+        NSLog(@"nuevo juego");
+        cell.nombreLabel.text = @"Nuevo Juego";
+    } else {
+    
+        Juego *j = juegos[indexPath.row - 1];
+        cell.nombreLabel.text = j.nombre;
+    
    // cell.puntosLabel.text = j.puntos;
     
    // cell.fotoIV.image = [UIImage imageNamed:m.foto];
-    
+    }
     return cell;
 }
 
@@ -71,10 +85,18 @@
     return NO;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    //DDMCargarCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    
+    if(indexPath.row == 0) {
+        [self performSegueWithIdentifier: @"nuevo" sender: self];
+    } else {
+        [self performSegueWithIdentifier: @"tip" sender: self];
+    }
+}
 
 
-
-/*
+/**/
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -82,7 +104,15 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"nuevo"]) { // crear juego nuevo
+    
+    } else { // carga juego existente
+        NSIndexPath *indexPath = [self.juegosTV indexPathForSelectedRow];
+        NSLog(@"row %ld", (long)indexPath.row);
+        id<DDMTieneJuego> dest = segue.destinationViewController;
+        dest.juego = juegos[indexPath.row - 1];
+    }
 }
-*/
+/**/
 
 @end

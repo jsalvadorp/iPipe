@@ -10,6 +10,7 @@
 #import "Juego.h"
 #import "DDMManejoDB.h"
 #import <CoreData/CoreData.h>
+#import <stdlib.h>
 
 @implementation DDMManejoDB {
     //NSMutableArray *_libros;
@@ -115,7 +116,39 @@
 }
 
 //Metodos para insertar en la BD
-- (void) insertarTip: (NSString *) ntip conTiempo: (long long) tiempo
+- (Tip *) randomTip {
+    NSManagedObjectContext *context = [self managedObjectContext];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tip"];
+    NSError *error;
+    //NSUInteger count = [context countForFetchRequest:request error:&error];
+    
+    NSArray *todos = [context executeFetchRequest:request error:&error];
+    
+    if (error != nil || todos.count == 0) {
+        return nil;
+    }
+    else {
+        return todos[arc4random() % todos.count];
+    }
+}
+
+- (NSArray *) juegos {
+    NSManagedObjectContext *context = [self managedObjectContext];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Juego"];
+    NSError *error;
+    //NSUInteger count = [context countForFetchRequest:request error:&error];
+    
+    NSArray *todos = [context executeFetchRequest:request error:&error];
+    
+    if (error != nil) {
+        return @[];
+    }
+    else {
+        return todos;
+    }
+}
+
+- (Tip *) insertarTip: (NSString *) ntip conTiempo: (long long) tiempo
 {
     NSManagedObjectContext *context = [self managedObjectContext];
     Tip *nuevoTip = [NSEntityDescription insertNewObjectForEntityForName:@"Tip" inManagedObjectContext:context];
@@ -123,9 +156,10 @@
     nuevoTip.timestamp = [NSNumber numberWithLongLong:tiempo];
     NSLog(@"tip %@ : %@", nuevoTip.tip, nuevoTip.timestamp);
     [self saveContext];
+    return nuevoTip;
 }
 
-- (void) insertarJuego: (NSString *) nombre
+- (Juego *) insertarJuego: (NSString *) nombre
 {
     NSManagedObjectContext *context = [self managedObjectContext];
     Juego *nuevoJuego = [NSEntityDescription insertNewObjectForEntityForName:@"Juego" inManagedObjectContext:context];
@@ -133,6 +167,7 @@
     nuevoJuego.puntos = @0;
     NSLog(@"tip %@ : %@", nuevoJuego.nombre, nuevoJuego.puntos);
     [self saveContext];
+    return nuevoJuego;
 }
 
 

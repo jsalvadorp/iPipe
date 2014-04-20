@@ -1,21 +1,20 @@
 //
-//  DDMjuegoNuevoViewController.m
+//  DDMJuegoViewController.m
 //  iPipe
 //
-//  Created by Isabel Guevara on 4/19/14.
+//  Created by Isabel Guevara on 4/20/14.
 //  Copyright (c) 2014 Ivan Diaz. All rights reserved.
 //
 
-#import "DDMjuegoNuevoViewController.h"
-#import "DDMManejoDB.h"
-#import "Juego.h"
-#import "DDMTieneJuego.h"
+#import "DDMJuegoViewController.h"
 
-@interface DDMjuegoNuevoViewController ()
+@interface DDMJuegoViewController ()
 
 @end
 
-@implementation DDMjuegoNuevoViewController
+@implementation DDMJuegoViewController
+
+@synthesize juego;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,7 +37,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-/**/
+/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -46,14 +45,10 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if(sender == self.startB && ![self.nombreTF.text isEqualToString:@""]) {
-        DDMManejoDB *db = [DDMManejoDB instancia];
-        Juego *juego = [db insertarJuego:self.nombreTF.text];
-        id<DDMTieneJuego>dest = segue.destinationViewController;
-        dest.juego = juego;
-        //[self performSegueWithIdentifier: @"SegueToScene1" sender: self];
-    }
 }
-/**/
+*/
 
+- (IBAction)salirPresionado:(id)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
 @end

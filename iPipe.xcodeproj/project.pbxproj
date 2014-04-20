@@ -19,6 +19,8 @@
 		9C90B88019031FBB00B4DA4D /* DDMCargarCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C90B87F19031FBB00B4DA4D /* DDMCargarCellTableViewCell.m */; };
 		9C90B8841903267B00B4DA4D /* Juego.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C90B8831903267B00B4DA4D /* Juego.m */; };
 		9C90B8881903271600B4DA4D /* DDMjuegoNuevoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C90B8871903271600B4DA4D /* DDMjuegoNuevoViewController.m */; };
+		9C90B88D1903B56900B4DA4D /* DDMMuestraTipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C90B88C1903B56900B4DA4D /* DDMMuestraTipViewController.m */; };
+		9C90B8901903BB3D00B4DA4D /* DDMJuegoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C90B88F1903BB3D00B4DA4D /* DDMJuegoViewController.m */; };
 		C4292E1D18E4FA2F0048B63E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4292E1C18E4FA2F0048B63E /* Foundation.framework */; };
 		C4292E1F18E4FA2F0048B63E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4292E1E18E4FA2F0048B63E /* CoreGraphics.framework */; };
 		C4292E2118E4FA2F0048B63E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4292E2018E4FA2F0048B63E /* UIKit.framework */; };
@@ -66,6 +68,11 @@
 		9C90B8831903267B00B4DA4D /* Juego.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Juego.m; sourceTree = "<group>"; };
 		9C90B8861903271600B4DA4D /* DDMjuegoNuevoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMjuegoNuevoViewController.h; sourceTree = "<group>"; };
 		9C90B8871903271600B4DA4D /* DDMjuegoNuevoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMjuegoNuevoViewController.m; sourceTree = "<group>"; };
+		9C90B88A1903AD3D00B4DA4D /* DDMTieneJuego.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDMTieneJuego.h; sourceTree = "<group>"; };
+		9C90B88B1903B56900B4DA4D /* DDMMuestraTipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMMuestraTipViewController.h; sourceTree = "<group>"; };
+		9C90B88C1903B56900B4DA4D /* DDMMuestraTipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMMuestraTipViewController.m; sourceTree = "<group>"; };
+		9C90B88E1903BB3D00B4DA4D /* DDMJuegoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMJuegoViewController.h; sourceTree = "<group>"; };
+		9C90B88F1903BB3D00B4DA4D /* DDMJuegoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMJuegoViewController.m; sourceTree = "<group>"; };
 		C4292E1918E4FA2F0048B63E /* iPipe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPipe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4292E1C18E4FA2F0048B63E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C4292E1E18E4FA2F0048B63E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -170,6 +177,7 @@
 			children = (
 				9C90B8861903271600B4DA4D /* DDMjuegoNuevoViewController.h */,
 				9C90B8871903271600B4DA4D /* DDMjuegoNuevoViewController.m */,
+				9C90B88A1903AD3D00B4DA4D /* DDMTieneJuego.h */,
 			);
 			name = JuegoNuevo;
 			sourceTree = "<group>";
@@ -207,6 +215,10 @@
 		C4292E2218E4FA2F0048B63E /* iPipe */ = {
 			isa = PBXGroup;
 			children = (
+				9C90B88B1903B56900B4DA4D /* DDMMuestraTipViewController.h */,
+				9C90B88C1903B56900B4DA4D /* DDMMuestraTipViewController.m */,
+				9C90B88E1903BB3D00B4DA4D /* DDMJuegoViewController.h */,
+				9C90B88F1903BB3D00B4DA4D /* DDMJuegoViewController.m */,
 				C4292E2B18E4FA2F0048B63E /* DDMAppDelegate.h */,
 				C4292E2C18E4FA2F0048B63E /* DDMAppDelegate.m */,
 				C4292E2E18E4FA2F0048B63E /* Images.xcassets */,
@@ -369,6 +381,8 @@
 				DAE4EFB3190085A500DC09C0 /* DDMManejoDB.m in Sources */,
 				C4292E2918E4FA2F0048B63E /* main.m in Sources */,
 				9C90B8881903271600B4DA4D /* DDMjuegoNuevoViewController.m in Sources */,
+				9C90B88D1903B56900B4DA4D /* DDMMuestraTipViewController.m in Sources */,
+				9C90B8901903BB3D00B4DA4D /* DDMJuegoViewController.m in Sources */,
 				C4292E4F18E4FAFB0048B63E /* DDMMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

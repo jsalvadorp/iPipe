@@ -12,7 +12,7 @@ $arr = array();
 $i = 0;
 
 while($row = mysqli_fetch_array($result)) {
-	$arr[$i] = array("tip" => $row['tip'], "timestamp" => $row['timestamp']);
+	$arr[$i] = array("tip" => $row['tip'], "timestamp" => (int)$row['timestamp']);
 	$i++;
 }
  

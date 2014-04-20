@@ -10,5 +10,6 @@
 
 @interface DDMjuegoNuevoViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UITextField *nombreTF;
+@property (strong, nonatomic) IBOutlet UIButton *startB;
 
 @end

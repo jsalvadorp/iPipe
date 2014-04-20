@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Tip.h"
+#import "Juego.h"
 
 @interface DDMManejoDB : NSObject <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 
@@ -18,9 +20,11 @@
 - (id) init;
 + (DDMManejoDB *) instancia;
 //Metodos para insertar en la BD
-- (void) insertarTip: (NSString *) ntip conTiempo: (long long) tiempo;
+- (Tip *) insertarTip: (NSString *) ntip conTiempo: (long long) tiempo;
+- (Juego *) insertarJuego: (NSString *) nombre;
 - (void) descargarTips;
 
-
+- (Tip *) randomTip;
+- (NSArray *) juegos;
 
 @end

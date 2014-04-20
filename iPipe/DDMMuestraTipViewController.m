@@ -1,21 +1,21 @@
 //
-//  DDMjuegoNuevoViewController.m
+//  DDMMuestraTipViewController.m
 //  iPipe
 //
-//  Created by Isabel Guevara on 4/19/14.
+//  Created by Isabel Guevara on 4/20/14.
 //  Copyright (c) 2014 Ivan Diaz. All rights reserved.
 //
 
-#import "DDMjuegoNuevoViewController.h"
+#import "DDMMuestraTipViewController.h"
 #import "DDMManejoDB.h"
-#import "Juego.h"
-#import "DDMTieneJuego.h"
 
-@interface DDMjuegoNuevoViewController ()
+@interface DDMMuestraTipViewController ()
 
 @end
 
-@implementation DDMjuegoNuevoViewController
+@implementation DDMMuestraTipViewController
+
+@synthesize juego;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,6 +30,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.tipTxtV.text = [[DDMManejoDB instancia] randomTip].tip;
+    [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(timerDisparo:) userInfo:nil repeats:NO];
+    [self.cargandoAI startAnimating];
 }
 
 - (void)didReceiveMemoryWarning
@@ -38,7 +41,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-/**/
+- (void) timerDisparo: (NSTimer *) timer {
+    [self performSegueWithIdentifier: @"juego" sender: self];
+}
+
+/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -46,14 +53,7 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if(sender == self.startB && ![self.nombreTF.text isEqualToString:@""]) {
-        DDMManejoDB *db = [DDMManejoDB instancia];
-        Juego *juego = [db insertarJuego:self.nombreTF.text];
-        id<DDMTieneJuego>dest = segue.destinationViewController;
-        dest.juego = juego;
-        //[self performSegueWithIdentifier: @"SegueToScene1" sender: self];
-    }
 }
-/**/
+*/
 
 @end
