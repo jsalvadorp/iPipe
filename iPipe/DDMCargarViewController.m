@@ -57,25 +57,25 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return juegos.count + 1;
+    return juegos.count;// + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DDMCargarCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    if(indexPath.row == 0) {
+    /*if(indexPath.row == 0) {
         NSLog(@"nuevo juego");
         cell.nombreLabel.text = @"Nuevo Juego";
     } else {
     
         Juego *j = juegos[indexPath.row - 1];
         cell.nombreLabel.text = j.nombre;
+    }*/
     
-   // cell.puntosLabel.text = j.puntos;
+    Juego *j = juegos[indexPath.row];
+    cell.nombreLabel.text = j.nombre;
     
-   // cell.fotoIV.image = [UIImage imageNamed:m.foto];
-    }
     return cell;
 }
 
@@ -88,11 +88,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //DDMCargarCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    if(indexPath.row == 0) {
+    /*if(indexPath.row == 0) {
         [self performSegueWithIdentifier: @"nuevo" sender: self];
-    } else {
+    } else {*/
         [self performSegueWithIdentifier: @"tip" sender: self];
-    }
+    /*}*/
 }
 
 
@@ -110,7 +110,7 @@
         NSIndexPath *indexPath = [self.juegosTV indexPathForSelectedRow];
         NSLog(@"row %ld", (long)indexPath.row);
         id<DDMTieneJuego> dest = segue.destinationViewController;
-        dest.juego = juegos[indexPath.row - 1];
+        dest.juego = juegos[indexPath.row];
     }
 }
 /**/
