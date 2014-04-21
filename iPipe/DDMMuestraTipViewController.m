@@ -30,9 +30,13 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.gif"]];
     self.tipTxtV.text = [[DDMManejoDB instancia] randomTip].tip;
     [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(timerDisparo:) userInfo:nil repeats:NO];
     [self.cargandoAI startAnimating];
+    self.tipTxtV.backgroundColor = [UIColor clearColor];
+
+    
 }
 
 - (void)didReceiveMemoryWarning

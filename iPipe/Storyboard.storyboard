@@ -62,6 +62,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="0nz-Uo-Ct7"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="toe-qf-wOG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -115,6 +116,7 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Instrucciones" id="FCp-yl-cXq"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EHG-4e-Ede" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -176,6 +178,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Cargar Juego" id="JmI-xm-VAv"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="juegosTV" destination="6Oc-62-dvD" id="lZm-cs-EwQ"/>
                         <segue destination="rHM-a7-8Tt" kind="push" identifier="nuevo" id="to2-eF-HUo"/>
@@ -231,6 +234,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Ranking" id="i8Y-EE-HKR"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kN4-UI-RrV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -295,6 +299,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Il3-Db-Rd1"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="nombreTF" destination="6T3-kj-k66" id="hFq-ZO-Ect"/>
                         <outlet property="startB" destination="hZJ-M4-VVZ" id="jV5-GW-wyc"/>
@@ -418,7 +423,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Vsb-ih-MNo"/>
-        <segue reference="to2-eF-HUo"/>
+        <segue reference="009-Y8-Jhv"/>
+        <segue reference="z85-ID-xBP"/>
     </inferredMetricsTieBreakers>
 </document>
