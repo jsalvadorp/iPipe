@@ -33,6 +33,8 @@
     
     [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(quitarTeclado:)]];
     
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.gif"]];
+    [self.navigationController setNavigationBarHidden:YES];
 }
 
 -(void) quitarTeclado:(UITapGestureRecognizer *) recognizer {
