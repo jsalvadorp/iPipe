@@ -379,6 +379,10 @@
                                     <action selector="salirPresionado:" destination="ax5-8a-oOW" eventType="touchUpInside" id="iUY-XI-yzj"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fondo.png" translatesAutoresizingMaskIntoConstraints="NO" id="nML-PD-TYo">
+                                <rect key="frame" x="0.0" y="0.0" width="373" height="320"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -386,6 +390,9 @@
                     <navigationItem key="navigationItem" id="CgV-1Z-jt8"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="fondoIV" destination="nML-PD-TYo" id="52o-qU-8JV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Dt-lL-zRR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -415,6 +422,7 @@
         <image name="Instrucciones.gif" width="636" height="312"/>
         <image name="Play.gif" width="646" height="308"/>
         <image name="Scores.gif" width="509" height="244"/>
+        <image name="fondo.png" width="747" height="640"/>
         <image name="iPipe.gif" width="391" height="181"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

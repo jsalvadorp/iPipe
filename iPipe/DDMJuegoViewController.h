@@ -12,4 +12,7 @@
 @interface DDMJuegoViewController : UIViewController <DDMTieneJuego>
 - (IBAction)salirPresionado:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UIImageView *fondoIV;
+
+
 @end
