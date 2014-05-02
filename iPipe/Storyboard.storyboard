@@ -380,7 +380,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fondo.png" translatesAutoresizingMaskIntoConstraints="NO" id="nML-PD-TYo">
-                                <rect key="frame" x="0.0" y="0.0" width="373" height="320"/>
+                                <rect key="frame" x="0.0" y="30" width="338" height="290"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>

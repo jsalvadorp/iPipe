@@ -54,8 +54,8 @@
     //CGRect screenRect = [[UIScreen mainScreen] bounds];
     screenWidth = self.fondoIV.frame.size.width;//screenRect.size.width;
     screenHeight = self.fondoIV.frame.size.height; //screenRect.size.height;
-    origenX = self.fondoIV.frame.origin.x; //0.0 //screenRect.origin.x;
-    origenY = self.fondoIV.frame.origin.x; //0.0 //screenRect.origin.y;
+    origenX = 0.0; //0.0 //screenRect.origin.x;
+    origenY = 30.0; //0.0 //screenRect.origin.y;
     width = 7;
     height = 6;
     queueCount = height;
@@ -63,10 +63,7 @@
     queueX = origenX + gridSize * width;
     //self.fondoIV.frame = CGRectMake(origenX, origenY, width * gridSize, height * gridSize);
     
-    
-    
-    
-    
+    //NSLog(@"origen = %lf, %lf w%lf h%lf", origenX, origenY, screenWidth, screenHeight);
     _tiles = [[NSMutableArray alloc] initWithCapacity:width];
     
     for(int i = 0; i < width; i++) {
@@ -84,15 +81,6 @@
     
     [self.fondoIV addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)]];
     self.fondoIV.userInteractionEnabled = YES;
-    /*UIImageView * sample = [[UIImageView alloc] initWithFrame:
-     CGRectMake(- 36, 70, gridSize, gridSize)];
-    sample.image = [UIImage imageNamed:@"imagenes/ur.png"];
-    sample.contentMode = UIViewContentModeScaleAspectFit;
-     [self.view addSubview:sample];*/
-    //NSLog(@"imagenx = %lf y = %lf", self.testIV.frame.origin.x, self.testIV.frame.origin.y);
-    //NSLog(@"width = %lf height = %lf queuex = %lf gridSize = %lf", screenWidth, screenHeight, queueX, gridSize);
-    
-    
     
     int faucetJ, drainJ;
     
@@ -145,102 +133,20 @@
         
         [self insertarPipe];
         
-        if(i > 0 && [_tiles[i][j] pipe] != nil && [[_tiles[i - 1][j] pipe] isWet:DDMPipeEndRight])
+        if(i > 0 && [_tiles[i - 1][j] pipe] != nil && [[_tiles[i - 1][j] pipe] isWet:DDMPipeEndRight])
             [self flowIntoI:i J:j End:DDMPipeEndLeft];
-        if(j > 0 && [_tiles[i][j] pipe] != nil && [[_tiles[i][j - 1] pipe] isWet:DDMPipeEndDown])
+        if(j > 0 && [_tiles[i][j - 1] pipe] != nil && [[_tiles[i][j - 1] pipe] isWet:DDMPipeEndDown])
             [self flowIntoI:i J:j End:DDMPipeEndUp];
-        if(j < height - 1 && [_tiles[i][j + 1] pipe] != nil && [[_tiles[i][j - 1] pipe] isWet:DDMPipeEndUp])
+        if(j < height - 1 && [_tiles[i][j + 1] pipe] != nil && [[_tiles[i][j + 1] pipe] isWet:DDMPipeEndUp])
             [self flowIntoI:i J:j End:DDMPipeEndDown];
-        if(i < width - 1 && [_tiles[i][j + 1] pipe] != nil && [[_tiles[i][j - 1] pipe] isWet:DDMPipeEndLeft])
+        if(i < width - 1 && [_tiles[i + 1][j] pipe] != nil && [[_tiles[i + 1][j] pipe] isWet:DDMPipeEndLeft])
             [self flowIntoI:i J:j End:DDMPipeEndRight];
 
-        NSLog(@"pipei = %d pipej = %d", i, j);
-        /*if(drippingI == i && drippingJ == j) {
-            if(pipe.ends & drippingEnd) {
-                NSLog(@"sisoy miend %d dutuend %d ", pipe.ends, drippingEnd);
-                pipe.wet = YES;
-                if(pipe.ends == (DDMPipeEndUp | DDMPipeEndLeft)) {
-                    pipe.image.image = [UIImage imageNamed:@"imagenes/ulw.png"];
-                } else if(pipe.ends == (DDMPipeEndUp | DDMPipeEndRight)) {
-                    pipe.image.image = [UIImage imageNamed:@"imagenes/urw.png"];
-                } else if(pipe.ends == (DDMPipeEndDown | DDMPipeEndLeft)) {
-                    pipe.image.image = [UIImage imageNamed:@"imagenes/dlw.png"];
-                } else if(pipe.ends == (DDMPipeEndDown | DDMPipeEndRight)) {
-                    pipe.image.image = [UIImage imageNamed:@"imagenes/drw.png"];
-                } else if(pipe.ends == (DDMPipeEndUp | DDMPipeEndDown)) {
-                    pipe.image.image = [UIImage imageNamed:@"imagenes/udw.png"];
-                } else if(pipe.ends == (DDMPipeEndLeft | DDMPipeEndRight)) {
-                    pipe.image.image = [UIImage imageNamed:@"imagenes/lrw.png"];
-                }
-                
-                if(pipe.ends & DDMPipeEndUp) {
-                    drippingJ--;
-                    drippingEnd = DDMPipeEndDown;
-                } else if(pipe.ends & DDMPipeEndDown) {
-                    drippingJ++;
-                    drippingEnd = DDMPipeEndUp;
-                } else if(pipe.ends & DDMPipeEndLeft) {
-                    drippingI--;
-                    drippingEnd = DDMPipeEndRight;
-                } else if(pipe.ends & DDMPipeEndRight) {
-                    drippingI++;
-                    drippingEnd = DDMPipeEndLeft;
-                }
-                
-            }
-        }*/
+        
     }
     
     //NSLog(@"new di = %d dj = %d", drippingI, drippingJ);
 }
-/*
-- (void) mojar {//I: (int) i J: (int) j End: (DDMPipeEnd) end {
-    int i = drippingI, j = drippingJ;
-    DDMPipeEnd end = drippingEnd;
-    //NSLog(@"maybe %d %d", i, j);
-    if(i < 0 || i >= width || j < 0 || j >= height)
-        return;
-     //NSLog(@"maybe %d %d", i, j);
-    DDMPipe *pipe = [_tiles[i][j] pipe];
-    
-    if(pipe.wet)
-        return;
-    
-    if(pipe.ends & end && pipe.type == DDMPipeTypePipe) {
-       // NSLog(@"wetting %d %d", i, j);
-    
-        pipe.wet = YES;
-        if(pipe.ends == (DDMPipeEndUp | DDMPipeEndLeft)) {
-            pipe.image.image = [UIImage imageNamed:@"imagenes/ulw.png"];
-        } else if(pipe.ends == (DDMPipeEndUp | DDMPipeEndRight)) {
-            pipe.image.image = [UIImage imageNamed:@"imagenes/urw.png"];
-        } else if(pipe.ends == (DDMPipeEndDown | DDMPipeEndLeft)) {
-            pipe.image.image = [UIImage imageNamed:@"imagenes/dlw.png"];
-        } else if(pipe.ends == (DDMPipeEndDown | DDMPipeEndRight)) {
-            pipe.image.image = [UIImage imageNamed:@"imagenes/drw.png"];
-        } else if(pipe.ends == (DDMPipeEndUp | DDMPipeEndDown)) {
-            pipe.image.image = [UIImage imageNamed:@"imagenes/udw.png"];
-        } else if(pipe.ends == (DDMPipeEndLeft | DDMPipeEndRight)) {
-            pipe.image.image = [UIImage imageNamed:@"imagenes/lrw.png"];
-        }
-        
-        
-    
-    if(pipe.ends & DDMPipeEndUp) {
-        drippingJ--;
-        drippingEnd = DDMPipeEndDown;
-    } else if(pipe.ends & DDMPipeEndDown) {
-        drippingJ++;
-        drippingEnd = DDMPipeEndUp;
-    } else if(pipe.ends & DDMPipeEndLeft) {
-        drippingI--;
-        drippingEnd = DDMPipeEndRight;
-    } else if(pipe.ends & DDMPipeEndRight) {
-        drippingI++;
-        drippingEnd = DDMPipeEndLeft;
-    }
-    }
-}*/
 
 -(void)flowIntoI:(int)i J:(int)j End: (DDMPipeEnd) end {
     if(i < 0 || i >= width || j < 0 || j >= height)
@@ -294,13 +200,6 @@
     };
     DDMPipeEnd randEnd = possibleEnds[arc4random() % 8];
     
-    NSLog(@"randEnd = %d d%d l%d r%d u%d",
-          (int)randEnd,
-          (int)DDMPipeEndDown,
-          (int)DDMPipeEndLeft,
-          (int)DDMPipeEndRight,
-          (int)DDMPipeEndUp);
-    
     DDMPipe *pipe = [[DDMPipe alloc]
                      initWithEnds:randEnd
                      andType:DDMPipeTypePipe
@@ -322,11 +221,13 @@
       //  NSLog(@"TOUCH");
         CGPoint point = [recognizer locationInView:recognizer.view];
         
-        CGFloat x = point.x - origenX,
-            y = point.y - origenY;
+        CGFloat x = point.x,
+            y = point.y;
         
         int i = (int) (x / gridSize),
             j = (int) (y / gridSize);
+        
+        NSLog(@"i %ld j %ld", i, j);
         
         [self ponerPipeEnI:i J:j];
     }
