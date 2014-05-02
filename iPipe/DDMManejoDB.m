@@ -209,7 +209,7 @@
 
     
     
-    NSString *url = [[NSString alloc] initWithFormat:@"http://localhost/tip.php?timestamp=%lld", ultimaActualizacion];
+    NSString *url = [[NSString alloc] initWithFormat:DDM_SERVIDOR_TIPS, ultimaActualizacion];
     url = [url stringByReplacingOccurrencesOfString:@" " withString:@"+"];
     
     NSURLRequest *urlRequest =

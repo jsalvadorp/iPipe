@@ -10,4 +10,18 @@
 
 @implementation DDMTile
 
+-(BOOL)isWet:(DDMPipeEnd)checkEnd {
+    if(self.pipe != nil)
+        return [self.pipe isWet:checkEnd];
+    else
+        return FALSE;
+}
+
+-(DDMPipeEnd)fillFrom:(DDMPipeEnd)checkEnd {
+    if(self.pipe != nil)
+        return [self.pipe fillFrom:checkEnd];
+    else
+        return FALSE;
+}
+
 @end

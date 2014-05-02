@@ -9,13 +9,13 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_OPTIONS(NSInteger, DDMPipeEnd) {
-    DDMPipeEndUp,
-    DDMPipeEndLeft,
-    DDMPipeEndRight,
-    DDMPipeEndDown,
+    DDMPipeEndUp = 0x1,
+    DDMPipeEndLeft = 0x2,
+    DDMPipeEndRight = 0x4,
+    DDMPipeEndDown = 0x8,
 };
 
-typedef NS_OPTIONS(NSInteger, DDMPipeType) {
+typedef NS_ENUM(NSInteger, DDMPipeType) {
     DDMPipeTypeFaucet,
     DDMPipeTypeDrain,
     DDMPipeTypePipe
@@ -29,12 +29,15 @@ typedef NS_OPTIONS(NSInteger, DDMPipeType) {
 @property (nonatomic) BOOL        wet;
 @property (nonatomic) BOOL        dripping;
 
-@property (strong, nonatomic) UIImageView *image;
+@property (strong, nonatomic) UIImageView *sprite;
 
--(id)initWithEnds:(DDMPipeEnd) ends andType:(DDMPipeType) type;
++(UIImage *)imageForEnds: (DDMPipeEnd) ends andWet: (BOOL) wet;
 -(BOOL) isWet: (DDMPipeEnd) checkEnd;
-+(id) faucet;
-+(id) drain;
+-(id)initWithEnds:(DDMPipeEnd)ends andType:(DDMPipeType) type andFrame: (CGRect) frame;
++(id) faucetWithFrame: (CGRect) frame;
++(id) drainWithFrame: (CGRect) frame;
+-(DDMPipeEnd)fillFrom:(DDMPipeEnd)checkEnd;
+
 
 
 @end

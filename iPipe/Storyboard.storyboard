@@ -422,8 +422,8 @@
         <image name="Instrucciones.gif" width="636" height="312"/>
         <image name="Play.gif" width="646" height="308"/>
         <image name="Scores.gif" width="509" height="244"/>
-        <image name="fondo.png" width="747" height="640"/>
         <image name="empezar.jpg" width="636" height="305"/>
+        <image name="fondo.png" width="747" height="640"/>
         <image name="iPipe.gif" width="391" height="181"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

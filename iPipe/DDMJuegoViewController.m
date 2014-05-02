@@ -14,6 +14,7 @@
     NSInteger width;
     NSInteger height;
     CGFloat gridSize;
+    int queueCount;
     
     CGFloat screenWidth;
     CGFloat screenHeight;
@@ -53,10 +54,11 @@
     //CGRect screenRect = [[UIScreen mainScreen] bounds];
     screenWidth = self.fondoIV.frame.size.width;//screenRect.size.width;
     screenHeight = self.fondoIV.frame.size.height; //screenRect.size.height;
-    origenX = 0.0; //screenRect.origin.x;
-    origenY = 0.0; //screenRect.origin.y;
+    origenX = self.fondoIV.frame.origin.x; //0.0 //screenRect.origin.x;
+    origenY = self.fondoIV.frame.origin.x; //0.0 //screenRect.origin.y;
     width = 7;
     height = 6;
+    queueCount = height;
     gridSize = screenHeight / height;
     queueX = origenX + gridSize * width;
     //self.fondoIV.frame = CGRectMake(origenX, origenY, width * gridSize, height * gridSize);
@@ -77,12 +79,8 @@
     
     _pipeQueue = [[NSMutableArray alloc] init];
     
-    [self insertarPipe];
-    [self insertarPipe];
-    [self insertarPipe];
-    [self insertarPipe];
-    [self insertarPipe];
-    [self insertarPipe];
+    for(int i = 0; i < queueCount; i++)
+        [self insertarPipe];
     
     [self.fondoIV addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)]];
     self.fondoIV.userInteractionEnabled = YES;
@@ -97,29 +95,22 @@
     
     
     int faucetJ, drainJ;
-    DDMPipe *faucet = [DDMPipe faucet];
-    faucet.image.contentMode = UIViewContentModeScaleAspectFit;
+    
     faucetJ = arc4random() % height;
+    DDMPipe *faucet = [DDMPipe faucetWithFrame:CGRectMake(0,
+                                                          origenY + faucetJ * gridSize,
+                                                          gridSize,
+                                                          gridSize)];
     ((DDMTile *)_tiles[0][faucetJ]).pipe = faucet;
-    [faucet.image setFrame:
-     CGRectMake(0,
-                origenY + faucetJ * gridSize,
-                gridSize,
-                gridSize)];
+    [self.view addSubview:faucet.sprite];
     
-    [self.view addSubview:faucet.image];
-    //NSLog(@"imagen %@", faucet.image.image);
-    
-    DDMPipe *drain = [DDMPipe drain];
     drainJ = arc4random() % height;
+    DDMPipe *drain = [DDMPipe drainWithFrame:CGRectMake(origenX + (width - 1) * gridSize,
+                                                        origenY + drainJ * gridSize,
+                                                        gridSize,
+                                                        gridSize)];
     ((DDMTile *)_tiles[width - 1][drainJ]).pipe = drain;
-    [drain.image setFrame:
-     CGRectMake(origenX + (width - 1) * gridSize,
-                origenY + drainJ * gridSize,
-                gridSize,
-                gridSize)];
-    
-    [self.view addSubview:drain.image];
+    [self.view addSubview:drain.sprite];
     //NSLog(@"imagen %@", drain.image.image);
     drippingI = 1;
     drippingJ = faucetJ;
@@ -130,17 +121,17 @@
 - (void) ponerPipeEnI:(int) i J: (int) j {
     if([_tiles[i][j] pipe] == nil) {
         for(int i = _pipeQueue.count - 1; i > 0; i--) {
-            UIImageView *image = ((DDMPipe *)_pipeQueue[i]).image;
+            UIImageView *image = ((DDMPipe *)_pipeQueue[i]).sprite;
             
             [UIView animateWithDuration:0.40 delay:0.0 options: UIViewAnimationCurveEaseOut animations:^{
                 [image setFrame:
-                 CGRectMake(((DDMPipe *)_pipeQueue[i - 1]).image.frame.origin.x,
-                            ((DDMPipe *)_pipeQueue[i - 1]).image.frame.origin.y,
+                 CGRectMake(((DDMPipe *)_pipeQueue[i - 1]).sprite.frame.origin.x,
+                            ((DDMPipe *)_pipeQueue[i - 1]).sprite.frame.origin.y,
                             gridSize, gridSize)];
                 } completion:nil];
         }
         
-        UIImageView *image = [((DDMPipe *)_pipeQueue[0]) image];
+        UIImageView *image = [((DDMPipe *)_pipeQueue[0]) sprite];
         
         [UIView animateWithDuration:0.40 delay:0.0 options: UIViewAnimationCurveEaseOut animations:^{
             [image setFrame:
@@ -154,17 +145,17 @@
         
         [self insertarPipe];
         
-        /*if(pipe.ends & DDMPipeEndLeft && i > 0 && [_tiles[i][j] pipe] != nil && [[_tiles[i - 1][j] pipe] isWet:DDMPipeEndRight])
-           || (pipe.ends & DDMPipeEndUp && j > 0 && [_tiles[i][j] pipe] != nil && [[_tiles[i][j - 1] pipe] isWet:DDMPipeEndDown])
-           || (pipe.ends & DDMPipeEndDown && j < height - 1 && [_tiles[i][j + 1] pipe] != nil && [[_tiles[i][j - 1] pipe] isWet:DDMPipeEndUp])
-           || (pipe.ends & DDMPipeEndRight && i < width - 1 && [_tiles[i][j + 1] pipe] != nil && [[_tiles[i][j - 1] pipe] isWet:DDMPipeEndLeft])
+        if(i > 0 && [_tiles[i][j] pipe] != nil && [[_tiles[i - 1][j] pipe] isWet:DDMPipeEndRight])
+            [self flowIntoI:i J:j End:DDMPipeEndLeft];
+        if(j > 0 && [_tiles[i][j] pipe] != nil && [[_tiles[i][j - 1] pipe] isWet:DDMPipeEndDown])
+            [self flowIntoI:i J:j End:DDMPipeEndUp];
+        if(j < height - 1 && [_tiles[i][j + 1] pipe] != nil && [[_tiles[i][j - 1] pipe] isWet:DDMPipeEndUp])
+            [self flowIntoI:i J:j End:DDMPipeEndDown];
+        if(i < width - 1 && [_tiles[i][j + 1] pipe] != nil && [[_tiles[i][j - 1] pipe] isWet:DDMPipeEndLeft])
+            [self flowIntoI:i J:j End:DDMPipeEndRight];
 
-        ) {
-            //pipe.wet = YES;
-            [self mojarI: i J: j ];
-        }*/
         NSLog(@"pipei = %d pipej = %d", i, j);
-        if(drippingI == i && drippingJ == j) {
+        /*if(drippingI == i && drippingJ == j) {
             if(pipe.ends & drippingEnd) {
                 NSLog(@"sisoy miend %d dutuend %d ", pipe.ends, drippingEnd);
                 pipe.wet = YES;
@@ -197,12 +188,12 @@
                 }
                 
             }
-        }
+        }*/
     }
     
-    NSLog(@"new di = %d dj = %d", drippingI, drippingJ);
+    //NSLog(@"new di = %d dj = %d", drippingI, drippingJ);
 }
-
+/*
 - (void) mojar {//I: (int) i J: (int) j End: (DDMPipeEnd) end {
     int i = drippingI, j = drippingJ;
     DDMPipeEnd end = drippingEnd;
@@ -249,51 +240,77 @@
         drippingEnd = DDMPipeEndLeft;
     }
     }
+}*/
+
+-(void)flowIntoI:(int)i J:(int)j End: (DDMPipeEnd) end {
+    if(i < 0 || i >= width || j < 0 || j >= height)
+        return;
+    if([_tiles[i][j] pipe] == nil) {
+        [self dripFromI:i J:j End:end];
+        
+        return;
+    }
+    
+    if([_tiles[i][j] pipe].wet == YES)
+        return;
+    
+    DDMPipeEnd outs = [[_tiles[i][j] pipe] fillFrom:end];
+    
+    if(outs & DDMPipeEndLeft) {
+        [self flowIntoI:i - 1 J:j End:DDMPipeEndRight];
+    }
+    
+    if(outs & DDMPipeEndRight) {
+        [self flowIntoI:i + 1 J:j End:DDMPipeEndLeft];
+    }
+    
+    if(outs & DDMPipeEndUp) {
+        [self flowIntoI:i J:j - 1 End:DDMPipeEndDown];
+    }
+    
+    if(outs & DDMPipeEndDown) {
+        [self flowIntoI:i J:j + 1 End:DDMPipeEndUp];
+    }
+}
+
+-(void)dripFromI:(int)i J:(int)j End: (DDMPipeEnd) end {
+    drippingI = i;
+    drippingJ = j;
+    drippingEnd = end;
+    
+    // mostrar drip
 }
 
 - (void) insertarPipe {
-    DDMPipeEnd randEnd = DDMPipeEndUp | DDMPipeEndLeft;
-    UIImage *image;
+    static DDMPipeEnd possibleEnds[] = {
+        DDMPipeEndUp | DDMPipeEndDown,
+        DDMPipeEndLeft | DDMPipeEndRight,
+        DDMPipeEndUp | DDMPipeEndLeft,
+        DDMPipeEndUp | DDMPipeEndRight,
+        DDMPipeEndDown | DDMPipeEndLeft,
+        DDMPipeEndDown | DDMPipeEndRight,
+        DDMPipeEndUp | DDMPipeEndDown,
+        DDMPipeEndLeft | DDMPipeEndRight
+    };
+    DDMPipeEnd randEnd = possibleEnds[arc4random() % 8];
     
-    switch(arc4random() % 6) {
-        case 0:
-            randEnd = DDMPipeEndUp | DDMPipeEndLeft;
-            image = [UIImage imageNamed:@"imagenes/ul.png"];
-            break;
-        case 1:
-            randEnd = DDMPipeEndUp | DDMPipeEndRight;
-            image = [UIImage imageNamed:@"imagenes/ur.png"];
-            break;
-        case 2:
-            randEnd = DDMPipeEndDown | DDMPipeEndLeft;
-            image = [UIImage imageNamed:@"imagenes/dl.png"];
-            break;
-        case 3:
-            randEnd = DDMPipeEndDown | DDMPipeEndRight;
-            image = [UIImage imageNamed:@"imagenes/dr.png"];
-            break;
-        case 4:
-            randEnd = DDMPipeEndUp | DDMPipeEndDown;
-            image = [UIImage imageNamed:@"imagenes/ud.png"];
-            break;
-        case 5:
-            randEnd = DDMPipeEndLeft | DDMPipeEndRight;
-            image = [UIImage imageNamed:@"imagenes/lr.png"];
-            break;
-    }
+    NSLog(@"randEnd = %d d%d l%d r%d u%d",
+          (int)randEnd,
+          (int)DDMPipeEndDown,
+          (int)DDMPipeEndLeft,
+          (int)DDMPipeEndRight,
+          (int)DDMPipeEndUp);
     
-    DDMPipe *pipe = [[DDMPipe alloc] initWithEnds:randEnd andType:DDMPipeTypePipe];
-    pipe.image = [[UIImageView alloc] initWithFrame:
-                  CGRectMake(queueX, origenY - gridSize, gridSize, gridSize)];
-    pipe.image.image = image;
-    pipe.image.contentMode = UIViewContentModeScaleAspectFit;
-    [self.view addSubview:pipe.image];
+    DDMPipe *pipe = [[DDMPipe alloc]
+                     initWithEnds:randEnd
+                     andType:DDMPipeTypePipe
+                     andFrame:CGRectMake(queueX, origenY - gridSize, gridSize, gridSize)];
+    [self.view addSubview:pipe.sprite];
     //NSLog(@"imagen %@", pipe.image.image);
     
     [UIView animateWithDuration:0.75 delay:0.0 options: UIViewAnimationCurveEaseOut animations:^{
-        [pipe.image setFrame:
+        [pipe.sprite setFrame:
          CGRectMake(queueX, origenY + (height - _pipeQueue.count - 1) * gridSize, gridSize, gridSize)];} completion:nil];
-    //NSLog(@"x = %lf y = %lf", origenX + gridSize * width, origenY + (_pipeQueue.count + 1) * gridSize);
     
     [_pipeQueue addObject:pipe];
     

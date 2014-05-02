@@ -12,5 +12,7 @@
 @interface DDMTile : NSObject
 
 @property (strong, nonatomic) DDMPipe *pipe;
+-(BOOL) isWet: (DDMPipeEnd) checkEnd;
+-(DDMPipeEnd) fillFrom: (DDMPipeEnd) checkEnd;
 
 @end
