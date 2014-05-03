@@ -383,6 +383,21 @@
                                 <rect key="frame" x="0.0" y="30" width="338" height="290"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="prog.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="bGd-uK-rrh">
+                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="queuebg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="cjg-q3-pkD">
+                                <rect key="frame" x="335" y="30" width="48" height="291"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0L" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3j-qi-Xu6">
+                                <rect key="frame" x="388" y="4" width="66" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -392,11 +407,13 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="fondoIV" destination="nML-PD-TYo" id="52o-qU-8JV"/>
+                        <outlet property="progIV" destination="bGd-uK-rrh" id="nsa-rP-LnC"/>
+                        <outlet property="puntosL" destination="K3j-qi-Xu6" id="qz2-0S-FWL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Dt-lL-zRR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2037" y="-779"/>
+            <point key="canvasLocation" x="2003" y="-734"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0fN-7H-81K">
@@ -425,6 +442,8 @@
         <image name="empezar.jpg" width="636" height="305"/>
         <image name="fondo.png" width="747" height="640"/>
         <image name="iPipe.gif" width="391" height="181"/>
+        <image name="prog.jpg" width="13" height="41"/>
+        <image name="queuebg.jpg" width="66" height="373"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

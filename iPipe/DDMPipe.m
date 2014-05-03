@@ -76,7 +76,7 @@
     img.frame = frame;
     img.contentMode = UIViewContentModeScaleAspectFit;
     DDMPipe *nuevo = [[DDMPipe alloc] init];
-    nuevo.ends = DDMPipeEndLeft;
+    nuevo.ends = DDMPipeEndLeft | DDMPipeEndRight | DDMPipeEndUp | DDMPipeEndDown;
     nuevo.type = DDMPipeTypeDrain;
     nuevo.wet = NO;
     nuevo.sprite = img;
@@ -91,6 +91,8 @@
     }
     return 0; // si no, no sale
 }
+
+
 
 
 @end

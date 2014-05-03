@@ -29,6 +29,10 @@
     
     NSMutableArray *_tiles;
     NSMutableArray *_pipeQueue;
+    
+    CGFloat wasted;
+    CGFloat max;
+    CGFloat delta;
 }
 
 @end
@@ -51,6 +55,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.gif"]];
+    
     //CGRect screenRect = [[UIScreen mainScreen] bounds];
     screenWidth = self.fondoIV.frame.size.width;//screenRect.size.width;
     screenHeight = self.fondoIV.frame.size.height; //screenRect.size.height;
@@ -61,6 +67,9 @@
     queueCount = height;
     gridSize = screenHeight / height;
     queueX = origenX + gridSize * width;
+    max = 20000.0;
+    wasted = 0.0;
+    delta = 15.0;
     //self.fondoIV.frame = CGRectMake(origenX, origenY, width * gridSize, height * gridSize);
     
     //NSLog(@"origen = %lf, %lf w%lf h%lf", origenX, origenY, screenWidth, screenHeight);
@@ -104,6 +113,24 @@
     drippingJ = faucetJ;
     drippingEnd = DDMPipeEndLeft;
     
+    self.progIV.frame = CGRectMake(0.0, 0.0, 0.0, origenY);
+    [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerDisparo:) userInfo:nil repeats:YES];
+}
+
+- (void) timerDisparo: (NSTimer *) timer {
+    wasted += delta;
+    if(wasted > max) {
+        /*CGContextRef context = UIGraphicsGetCurrentContext();
+        CGContextSetLineWidth(context, 4.0);
+        CGContextSetRGBStrokeColor(context, 1.0, 1.0, 0, 1.0); // opaque yellow
+        CGContextMoveToPoint(context, x1, y1); // for suitable definition of x1,y1, etc
+        CGContextAddLineToPoint(context, x2, y2);
+        CGContextStrokePath(context);*/
+        [timer invalidate];
+        [self terminar:FALSE];
+    } else {
+        self.progIV.frame = CGRectMake(0.0, 0.0, 7 * gridSize * (wasted / max), origenY);
+    }
 }
 
 - (void) ponerPipeEnI:(int) i J: (int) j {
@@ -141,7 +168,7 @@
             [self flowIntoI:i J:j End:DDMPipeEndDown];
         if(i < width - 1 && [_tiles[i + 1][j] pipe] != nil && [[_tiles[i + 1][j] pipe] isWet:DDMPipeEndLeft])
             [self flowIntoI:i J:j End:DDMPipeEndRight];
-
+        
         
     }
     
@@ -156,6 +183,9 @@
         
         return;
     }
+    
+    if([_tiles[i][j] pipe].type == DDMPipeTypeDrain)
+        [self terminar:YES];
     
     if([_tiles[i][j] pipe].wet == YES)
         return;
@@ -215,6 +245,28 @@
     
 }
 
+-(void)terminar:(BOOL)gano {
+    
+    if (gano){
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:@"GANASTE"
+                          message:nil
+                          delegate:self
+                          cancelButtonTitle:@"Cancel"
+                          otherButtonTitles:@"OK", nil];
+    [alert show];
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:@"PERDISTE"
+                              message:nil
+                              delegate:self
+                              cancelButtonTitle:@"Cancel"
+                              otherButtonTitles:@"OK", nil];
+        [alert show];
+    }
+    
+}
+
 - (void) tap: (UITapGestureRecognizer *)recognizer {
     //NSLog(@"TOUCH");
     if(recognizer.state == UIGestureRecognizerStateRecognized) {
@@ -256,6 +308,11 @@
 
 - (BOOL) prefersStatusBarHidden {
     return YES;
+}
+
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
 @end

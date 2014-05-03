@@ -49,6 +49,8 @@
 		9C7679B819140285004A39E3 /* ulw.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C7679A919140285004A39E3 /* ulw.png */; };
 		9C7679B919140285004A39E3 /* ur.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C7679AA19140285004A39E3 /* ur.png */; };
 		9C7679BA19140285004A39E3 /* urw.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C7679AB19140285004A39E3 /* urw.png */; };
+		9C7679BC1914774D004A39E3 /* prog.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C7679BB1914774D004A39E3 /* prog.jpg */; };
+		9C7679BE19147BE9004A39E3 /* queuebg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C7679BD19147BE9004A39E3 /* queuebg.jpg */; };
 		C4292E1D18E4FA2F0048B63E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4292E1C18E4FA2F0048B63E /* Foundation.framework */; };
 		C4292E1F18E4FA2F0048B63E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4292E1E18E4FA2F0048B63E /* CoreGraphics.framework */; };
 		C4292E2118E4FA2F0048B63E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4292E2018E4FA2F0048B63E /* UIKit.framework */; };
@@ -127,6 +129,8 @@
 		9C7679A919140285004A39E3 /* ulw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ulw.png; sourceTree = "<group>"; };
 		9C7679AA19140285004A39E3 /* ur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ur.png; sourceTree = "<group>"; };
 		9C7679AB19140285004A39E3 /* urw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = urw.png; sourceTree = "<group>"; };
+		9C7679BB1914774D004A39E3 /* prog.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = prog.jpg; sourceTree = "<group>"; };
+		9C7679BD19147BE9004A39E3 /* queuebg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = queuebg.jpg; sourceTree = "<group>"; };
 		C4292E1918E4FA2F0048B63E /* iPipe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPipe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4292E1C18E4FA2F0048B63E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C4292E1E18E4FA2F0048B63E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -187,6 +191,7 @@
 				9C500AC2190B9E5000FA0773 /* DDMMuestraTipViewController.m */,
 				9C500AC3190B9E5000FA0773 /* DDMPipe.h */,
 				9C500AC4190B9E5000FA0773 /* DDMPipe.m */,
+				9C500ADA190B9E5000FA0773 /* Storyboard.storyboard */,
 				9C500AC5190B9E5000FA0773 /* DDMTieneJuego.h */,
 				9C500AC6190B9E5000FA0773 /* DDMTile.h */,
 				9C500AC7190B9E5000FA0773 /* DDMTile.m */,
@@ -198,7 +203,6 @@
 				9C500AD6190B9E5000FA0773 /* Juego.m */,
 				9C500AD7190B9E5000FA0773 /* main.m */,
 				9C500AD8190B9E5000FA0773 /* Model.xcdatamodeld */,
-				9C500ADA190B9E5000FA0773 /* Storyboard.storyboard */,
 				9C500ADB190B9E5000FA0773 /* Tip.h */,
 				9C500ADC190B9E5000FA0773 /* Tip.m */,
 			);
@@ -228,12 +232,14 @@
 				9C76799F19140285004A39E3 /* dr.png */,
 				9C7679A019140285004A39E3 /* drain.png */,
 				9C7679A119140285004A39E3 /* drw.png */,
+				9C7679BB1914774D004A39E3 /* prog.jpg */,
 				9C7679A219140285004A39E3 /* faucet.png */,
 				9C7679A319140285004A39E3 /* fondo.png */,
 				9C7679A419140285004A39E3 /* lr.png */,
 				9C7679A519140285004A39E3 /* lrw.png */,
 				9C7679A619140285004A39E3 /* ud.png */,
 				9C7679A719140285004A39E3 /* udw.png */,
+				9C7679BD19147BE9004A39E3 /* queuebg.jpg */,
 				9C7679A819140285004A39E3 /* ul.png */,
 				9C7679A919140285004A39E3 /* ulw.png */,
 				9C7679AA19140285004A39E3 /* ur.png */,
@@ -366,9 +372,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C7679BE19147BE9004A39E3 /* queuebg.jpg in Resources */,
 				9C7679B119140285004A39E3 /* faucet.png in Resources */,
 				9C500AE0190B9E5000FA0773 /* Instrucciones.gif in Resources */,
 				9C7679AF19140285004A39E3 /* drain.png in Resources */,
+				9C7679BC1914774D004A39E3 /* prog.jpg in Resources */,
 				9C7679AC19140285004A39E3 /* dl.png in Resources */,
 				9C500AF0190B9E5000FA0773 /* InfoPlist.strings in Resources */,
 				9C500ADE190B9E5000FA0773 /* Cargar.gif in Resources */,

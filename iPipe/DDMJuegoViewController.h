@@ -13,6 +13,8 @@
 - (IBAction)salirPresionado:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UIImageView *fondoIV;
+@property (strong, nonatomic) IBOutlet UIImageView *progIV;
 
+@property (strong, nonatomic) IBOutlet UILabel *puntosL;
 
 @end
