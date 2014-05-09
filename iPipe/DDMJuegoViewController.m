@@ -197,11 +197,11 @@ const DDMPipeEnd possibleEnds[] = {
 }
 
 - (NSString *) gameState {
-    NSString *state = @"";
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    dict[@"wasted"] = [NSNumber numberWithDouble: wasted];
     
     
-    
-    return state;
+    return @"";
 }
 
 - (void) ponerPipeEnI:(int) i J: (int) j {
