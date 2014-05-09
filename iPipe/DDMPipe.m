@@ -84,7 +84,7 @@
 }
 
 -(DDMPipeEnd)fillFrom:(DDMPipeEnd)checkEnd {
-    if(self.ends & checkEnd) { // si el agua puede entrar por ese end
+    if((self.ends & checkEnd) && self.type != DDMPipeTypeDrain) { // si el agua puede entrar por ese end
         self.wet = TRUE; // el pipe se moja
         self.sprite.image = [DDMPipe imageForEnds:self.ends andWet:YES];
         return self.ends & (~checkEnd); // el agua sale por todos los demas ends
