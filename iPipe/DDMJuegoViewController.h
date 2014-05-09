@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DDMTieneJuego.h"
+@import AVFoundation;
 
 @interface DDMJuegoViewController : UIViewController <DDMTieneJuego>
 - (IBAction)salirPresionado:(id)sender;
@@ -17,4 +18,5 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *puntosL;
 
+@property (nonatomic) AVAudioPlayer * backgroundMusicPlayer;
 @end

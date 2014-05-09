@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@import AVFoundation;
 
 @interface DDMjuegoNuevoViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UITextField *nombreTF;
 @property (strong, nonatomic) IBOutlet UIButton *startB;
+
+@property (nonatomic) AVAudioPlayer * backgroundMusicPlayer;
 
 @end

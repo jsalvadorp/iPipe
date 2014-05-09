@@ -9,6 +9,8 @@
 #import "DDMJuegoViewController.h"
 #import "DDMTile.h"
 #import "DDMPipe.h"
+#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface DDMJuegoViewController () {
     NSInteger width;
@@ -33,6 +35,7 @@
     CGFloat wasted;
     CGFloat max;
     CGFloat delta;
+    
 }
 
 @end
@@ -54,9 +57,15 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    [UIImage imageNamed:@"water.png"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.gif"]];
     
+    NSError *error;
+    NSURL * backgroundMusicURL = [[NSBundle mainBundle] URLForResource:@"waterJuego" withExtension:@"mp3"];
+    self.backgroundMusicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:backgroundMusicURL error:&error];
+    self.backgroundMusicPlayer.numberOfLoops = -1;
+    [self.backgroundMusicPlayer prepareToPlay];
+    [self.backgroundMusicPlayer play];
     //CGRect screenRect = [[UIScreen mainScreen] bounds];
     screenWidth = self.fondoIV.frame.size.width;//screenRect.size.width;
     screenHeight = self.fondoIV.frame.size.height; //screenRect.size.height;
@@ -214,7 +223,7 @@
     drippingJ = j;
     drippingEnd = end;
     
-    // mostrar drip
+    [UIImage imageNamed:@"water.png"];
 }
 
 - (void) insertarPipe {

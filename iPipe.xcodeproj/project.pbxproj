@@ -50,7 +50,6 @@
 		9C7679B919140285004A39E3 /* ur.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C7679AA19140285004A39E3 /* ur.png */; };
 		9C7679BA19140285004A39E3 /* urw.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C7679AB19140285004A39E3 /* urw.png */; };
 		9C7679BC1914774D004A39E3 /* prog.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C7679BB1914774D004A39E3 /* prog.jpg */; };
-		9C7679BE19147BE9004A39E3 /* queuebg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C7679BD19147BE9004A39E3 /* queuebg.jpg */; };
 		C4292E1D18E4FA2F0048B63E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4292E1C18E4FA2F0048B63E /* Foundation.framework */; };
 		C4292E1F18E4FA2F0048B63E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4292E1E18E4FA2F0048B63E /* CoreGraphics.framework */; };
 		C4292E2118E4FA2F0048B63E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4292E2018E4FA2F0048B63E /* UIKit.framework */; };
@@ -59,6 +58,12 @@
 		C4292E3818E4FA2F0048B63E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4292E2018E4FA2F0048B63E /* UIKit.framework */; };
 		C4292E4018E4FA2F0048B63E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C4292E3E18E4FA2F0048B63E /* InfoPlist.strings */; };
 		C4292E4218E4FA2F0048B63E /* iPipeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C4292E4118E4FA2F0048B63E /* iPipeTests.m */; };
+		C4835166191D485500C4A919 /* water.gif in Resources */ = {isa = PBXBuildFile; fileRef = C4835165191D485400C4A919 /* water.gif */; };
+		C4835168191D591D00C4A919 /* botonSalir.png in Resources */ = {isa = PBXBuildFile; fileRef = C4835167191D591D00C4A919 /* botonSalir.png */; };
+		C483516A191D59CF00C4A919 /* empezar.png in Resources */ = {isa = PBXBuildFile; fileRef = C4835169191D59CF00C4A919 /* empezar.png */; };
+		C483516C191D5C5D00C4A919 /* queuebg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C483516B191D5C5D00C4A919 /* queuebg.jpg */; };
+		C4835173191D685C00C4A919 /* waterPantallas.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C4835171191D685C00C4A919 /* waterPantallas.mp3 */; };
+		C4835174191D685C00C4A919 /* waterJuego.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C4835172191D685C00C4A919 /* waterJuego.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,7 +135,6 @@
 		9C7679AA19140285004A39E3 /* ur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ur.png; sourceTree = "<group>"; };
 		9C7679AB19140285004A39E3 /* urw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = urw.png; sourceTree = "<group>"; };
 		9C7679BB1914774D004A39E3 /* prog.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = prog.jpg; sourceTree = "<group>"; };
-		9C7679BD19147BE9004A39E3 /* queuebg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = queuebg.jpg; sourceTree = "<group>"; };
 		C4292E1918E4FA2F0048B63E /* iPipe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPipe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4292E1C18E4FA2F0048B63E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C4292E1E18E4FA2F0048B63E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -140,6 +144,12 @@
 		C4292E3D18E4FA2F0048B63E /* iPipeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iPipeTests-Info.plist"; sourceTree = "<group>"; };
 		C4292E3F18E4FA2F0048B63E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C4292E4118E4FA2F0048B63E /* iPipeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iPipeTests.m; sourceTree = "<group>"; };
+		C4835165191D485400C4A919 /* water.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = water.gif; sourceTree = "<group>"; };
+		C4835167191D591D00C4A919 /* botonSalir.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = botonSalir.png; sourceTree = "<group>"; };
+		C4835169191D59CF00C4A919 /* empezar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = empezar.png; sourceTree = "<group>"; };
+		C483516B191D5C5D00C4A919 /* queuebg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = queuebg.jpg; sourceTree = "<group>"; };
+		C4835171191D685C00C4A919 /* waterPantallas.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = waterPantallas.mp3; sourceTree = "<group>"; };
+		C4835172191D685C00C4A919 /* waterJuego.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = waterJuego.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +179,8 @@
 		9C500AA7190B9E5000FA0773 /* iPipe */ = {
 			isa = PBXGroup;
 			children = (
+				C4835171191D685C00C4A919 /* waterPantallas.mp3 */,
+				C4835172191D685C00C4A919 /* waterJuego.mp3 */,
 				9C76799C19140285004A39E3 /* imagenes */,
 				9C500AA8190B9E5000FA0773 /* botones */,
 				9C500AB1190B9E5000FA0773 /* DDMAppDelegate.h */,
@@ -212,6 +224,8 @@
 		9C500AA8190B9E5000FA0773 /* botones */ = {
 			isa = PBXGroup;
 			children = (
+				C4835169191D59CF00C4A919 /* empezar.png */,
+				C4835167191D591D00C4A919 /* botonSalir.png */,
 				9C500AA9190B9E5000FA0773 /* background.gif */,
 				9C500AAA190B9E5000FA0773 /* Cargar.gif */,
 				9C500AAB190B9E5000FA0773 /* Felicidades.gif */,
@@ -227,10 +241,12 @@
 		9C76799C19140285004A39E3 /* imagenes */ = {
 			isa = PBXGroup;
 			children = (
+				C4835165191D485400C4A919 /* water.gif */,
 				9C76799D19140285004A39E3 /* dl.png */,
 				9C76799E19140285004A39E3 /* dlw.png */,
 				9C76799F19140285004A39E3 /* dr.png */,
 				9C7679A019140285004A39E3 /* drain.png */,
+				C483516B191D5C5D00C4A919 /* queuebg.jpg */,
 				9C7679A119140285004A39E3 /* drw.png */,
 				9C7679BB1914774D004A39E3 /* prog.jpg */,
 				9C7679A219140285004A39E3 /* faucet.png */,
@@ -239,7 +255,6 @@
 				9C7679A519140285004A39E3 /* lrw.png */,
 				9C7679A619140285004A39E3 /* ud.png */,
 				9C7679A719140285004A39E3 /* udw.png */,
-				9C7679BD19147BE9004A39E3 /* queuebg.jpg */,
 				9C7679A819140285004A39E3 /* ul.png */,
 				9C7679A919140285004A39E3 /* ulw.png */,
 				9C7679AA19140285004A39E3 /* ur.png */,
@@ -372,22 +387,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C7679BE19147BE9004A39E3 /* queuebg.jpg in Resources */,
 				9C7679B119140285004A39E3 /* faucet.png in Resources */,
 				9C500AE0190B9E5000FA0773 /* Instrucciones.gif in Resources */,
 				9C7679AF19140285004A39E3 /* drain.png in Resources */,
+				C4835168191D591D00C4A919 /* botonSalir.png in Resources */,
 				9C7679BC1914774D004A39E3 /* prog.jpg in Resources */,
 				9C7679AC19140285004A39E3 /* dl.png in Resources */,
 				9C500AF0190B9E5000FA0773 /* InfoPlist.strings in Resources */,
 				9C500ADE190B9E5000FA0773 /* Cargar.gif in Resources */,
+				C483516C191D5C5D00C4A919 /* queuebg.jpg in Resources */,
+				C4835166191D485500C4A919 /* water.gif in Resources */,
 				9C500AE3190B9E5000FA0773 /* Scores.gif in Resources */,
 				9C500ADF190B9E5000FA0773 /* Felicidades.gif in Resources */,
+				C4835173191D685C00C4A919 /* waterPantallas.mp3 in Resources */,
+				C4835174191D685C00C4A919 /* waterJuego.mp3 in Resources */,
 				9C7679AD19140285004A39E3 /* dlw.png in Resources */,
 				9C500AF8190B9E5000FA0773 /* Images.xcassets in Resources */,
 				9C7679B319140285004A39E3 /* lr.png in Resources */,
 				9C500AF9190B9E5000FA0773 /* iPipe-Info.plist in Resources */,
 				9C500AE2190B9E5000FA0773 /* Play.gif in Resources */,
 				9C7679B919140285004A39E3 /* ur.png in Resources */,
+				C483516A191D59CF00C4A919 /* empezar.png in Resources */,
 				9C7679B419140285004A39E3 /* lrw.png in Resources */,
 				9C500AE1190B9E5000FA0773 /* iPipe.gif in Resources */,
 				9C7679B719140285004A39E3 /* ul.png in Resources */,

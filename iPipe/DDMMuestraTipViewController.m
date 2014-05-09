@@ -35,6 +35,12 @@
     [NSTimer scheduledTimerWithTimeInterval:1.5/*3.0*/ target:self selector:@selector(timerDisparo:) userInfo:nil repeats:NO];
     [self.cargandoAI startAnimating];
     self.tipTxtV.backgroundColor = [UIColor clearColor];
+    NSError *error;
+    NSURL * backgroundMusicURL = [[NSBundle mainBundle] URLForResource:@"waterPantallas" withExtension:@"mp3"];
+    self.backgroundMusicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:backgroundMusicURL error:&error];
+    self.backgroundMusicPlayer.numberOfLoops = -1;
+    [self.backgroundMusicPlayer prepareToPlay];
+    [self.backgroundMusicPlayer play];
 
     
 }

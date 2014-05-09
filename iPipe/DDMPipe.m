@@ -15,6 +15,7 @@
     
     if(ends == (DDMPipeEndDown | DDMPipeEndLeft)) {
         imageName = [imageName stringByAppendingString:@"dl"];
+        
     } else if(ends == (DDMPipeEndDown | DDMPipeEndRight)) {
         imageName = [imageName stringByAppendingString:@"dr"];
     } else if(ends == (DDMPipeEndUp | DDMPipeEndLeft)) {
