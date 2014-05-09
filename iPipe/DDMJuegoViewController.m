@@ -11,6 +11,16 @@
 #import "DDMPipe.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
+#import <stdlib.h>
+
+const DDMPipeEnd possibleEnds[] = {
+    DDMPipeEndUp | DDMPipeEndLeft,
+    DDMPipeEndUp | DDMPipeEndRight,
+    DDMPipeEndDown | DDMPipeEndLeft,
+    DDMPipeEndDown | DDMPipeEndRight,
+    DDMPipeEndUp | DDMPipeEndDown,
+    DDMPipeEndLeft | DDMPipeEndRight
+};
 
 @interface DDMJuegoViewController () {
     NSInteger width;
@@ -20,6 +30,7 @@
     
     CGFloat screenWidth;
     CGFloat screenHeight;
+    CGFloat topBarHeight;
     
     CGFloat origenX;
     CGFloat origenY;
@@ -36,6 +47,8 @@
     CGFloat max;
     CGFloat delta;
     
+
+    NSTimer *timer;
 }
 
 @end
@@ -67,19 +80,21 @@
     [self.backgroundMusicPlayer prepareToPlay];
     [self.backgroundMusicPlayer play];
     //CGRect screenRect = [[UIScreen mainScreen] bounds];
-    screenWidth = self.fondoIV.frame.size.width;//screenRect.size.width;
-    screenHeight = self.fondoIV.frame.size.height; //screenRect.size.height;
+    screenWidth = 640;//self.fondoIV.frame.size.width;//screenRect.size.width;
+    screenHeight = 320; //self.fondoIV.frame.size.height; //screenRect.size.height;
+    topBarHeight = 30.0;
+    
     origenX = 0.0; //0.0 //screenRect.origin.x;
     origenY = 30.0; //0.0 //screenRect.origin.y;
     width = 7;
     height = 6;
     queueCount = height;
-    gridSize = screenHeight / height;
+    gridSize = (screenHeight - topBarHeight) / height;
     queueX = origenX + gridSize * width;
-    max = 20000.0;
+    max = 15000.0;
     wasted = 0.0;
     delta = 15.0;
-    //self.fondoIV.frame = CGRectMake(origenX, origenY, width * gridSize, height * gridSize);
+    self.fondoIV.frame = CGRectMake(origenX, origenY, width * gridSize, height * gridSize);
     
     //NSLog(@"origen = %lf, %lf w%lf h%lf", origenX, origenY, screenWidth, screenHeight);
     _tiles = [[NSMutableArray alloc] initWithCapacity:width];
@@ -91,11 +106,15 @@
             _tiles[i][j] = [[DDMTile alloc] init];
         }
     }
-    
     _pipeQueue = [[NSMutableArray alloc] init];
     
-    for(int i = 0; i < queueCount; i++)
-        [self insertarPipe];
+    if(true) {
+        [self makeQueue];
+    } else {
+    
+    }
+    
+    
     
     [self.fondoIV addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)]];
     self.fondoIV.userInteractionEnabled = YES;
@@ -123,7 +142,40 @@
     drippingEnd = DDMPipeEndLeft;
     
     self.progIV.frame = CGRectMake(0.0, 0.0, 0.0, origenY);
-    [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerDisparo:) userInfo:nil repeats:YES];
+    timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerDisparo:) userInfo:nil repeats:YES];
+}
+
+- (void) makeQueue {
+    static CGFloat fracEnd[] = {
+        0.17,
+        0.17,
+        0.17,
+        0.17,
+        0.16,
+        0.16
+    };
+    
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
+    
+    for(int end = 0; end < 6; end++) {
+        for(int i = 0; i < width * height * fracEnd[end]; i++) {
+            [arr addObject:
+             @[[NSNumber numberWithInt:possibleEnds[end]],
+               [NSNumber numberWithInt:(arc4random() % 0xFFFFFF)]]];
+        }
+    }
+    [arr addObject:
+     @[[NSNumber numberWithInt:possibleEnds[(arc4random() % 0xFFFFFF) % 6]],
+       [NSNumber numberWithInt:arc4random()]]];
+    
+    [arr sortUsingComparator:^NSComparisonResult(id a, id b){return [a[1] compare: b[1]];}];
+    
+    for(int i = 0; i < arr.count; i++) {
+        [self insertarPipe:[arr[i][0] integerValue]];
+    }
+    
+    
+    
 }
 
 - (void) timerDisparo: (NSTimer *) timer {
@@ -135,11 +187,21 @@
         CGContextMoveToPoint(context, x1, y1); // for suitable definition of x1,y1, etc
         CGContextAddLineToPoint(context, x2, y2);
         CGContextStrokePath(context);*/
-        [timer invalidate];
+        //[timer invalidate];
+        self.puntosL.text = [NSString stringWithFormat:@"%d L", (int)wasted];
         [self terminar:FALSE];
     } else {
+        self.puntosL.text = [NSString stringWithFormat:@"%d L", (int)wasted];
         self.progIV.frame = CGRectMake(0.0, 0.0, 7 * gridSize * (wasted / max), origenY);
     }
+}
+
+- (NSString *) gameState {
+    NSString *state = @"";
+    
+    
+    
+    return state;
 }
 
 - (void) ponerPipeEnI:(int) i J: (int) j {
@@ -167,7 +229,7 @@
         DDMPipe *pipe = _pipeQueue[0];
         [_pipeQueue removeObjectAtIndex:0];
         
-        [self insertarPipe];
+        //[self insertarPipe];
         
         if(i > 0 && [_tiles[i - 1][j] pipe] != nil && [[_tiles[i - 1][j] pipe] isWet:DDMPipeEndRight])
             [self flowIntoI:i J:j End:DDMPipeEndLeft];
@@ -193,8 +255,10 @@
         return;
     }
     
-    if([_tiles[i][j] pipe].type == DDMPipeTypeDrain)
+    if([_tiles[i][j] pipe].type == DDMPipeTypeDrain) {
         [self terminar:YES];
+        return;
+    }
     
     if([_tiles[i][j] pipe].wet == YES)
         return;
@@ -226,7 +290,7 @@
     [UIImage imageNamed:@"water.png"];
 }
 
-- (void) insertarPipe {
+- (void) insertarPipe: (DDMPipeEnd) randEnd {
     static DDMPipeEnd possibleEnds[] = {
         DDMPipeEndUp | DDMPipeEndDown,
         DDMPipeEndLeft | DDMPipeEndRight,
@@ -237,7 +301,7 @@
         DDMPipeEndUp | DDMPipeEndDown,
         DDMPipeEndLeft | DDMPipeEndRight
     };
-    DDMPipeEnd randEnd = possibleEnds[arc4random() % 8];
+    //DDMPipeEnd randEnd = possibleEnds[arc4random() % 8];
     
     DDMPipe *pipe = [[DDMPipe alloc]
                      initWithEnds:randEnd
@@ -255,15 +319,16 @@
 }
 
 -(void)terminar:(BOOL)gano {
+    [timer invalidate];
     
     if (gano){
-    UIAlertView *alert = [[UIAlertView alloc]
+        UIAlertView *alert = [[UIAlertView alloc]
                           initWithTitle:@"GANASTE"
                           message:nil
                           delegate:self
                           cancelButtonTitle:@"Cancel"
                           otherButtonTitles:@"OK", nil];
-    [alert show];
+        [alert show];
     } else {
         UIAlertView *alert = [[UIAlertView alloc]
                               initWithTitle:@"PERDISTE"
