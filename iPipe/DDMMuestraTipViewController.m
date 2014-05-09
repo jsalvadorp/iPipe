@@ -39,8 +39,8 @@
     NSURL * backgroundMusicURL = [[NSBundle mainBundle] URLForResource:@"waterPantallas" withExtension:@"mp3"];
     self.backgroundMusicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:backgroundMusicURL error:&error];
     self.backgroundMusicPlayer.numberOfLoops = -1;
-    [self.backgroundMusicPlayer prepareToPlay];
-    [self.backgroundMusicPlayer play];
+    //[self.backgroundMusicPlayer prepareToPlay];
+    //[self.backgroundMusicPlayer play];
 
     
 }

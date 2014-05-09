@@ -200,8 +200,25 @@ const DDMPipeEnd possibleEnds[] = {
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     dict[@"wasted"] = [NSNumber numberWithDouble: wasted];
     
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
     
-    return @"";
+    for(int i = 0; i < width; i++) {
+        for(int j = 0; j < height; j++) {
+            if([_tiles[i][j] pipe] != nil) {
+                [arr addObject:@{@"i" : [NSNumber numberWithInt:i],
+                                 @"j" : [NSNumber numberWithInt:j],
+                                 @"end" : [NSNumber numberWithInt:[_tiles[i][j] pipe].ends]}];
+            }
+        }
+    }
+    
+    NSError *error;
+    NSData *jsonData =
+        [NSJSONSerialization dataWithJSONObject:self
+                                        options:(NSJSONWritingOptions)0
+                                          error:&error];
+    
+    return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 }
 
 - (void) ponerPipeEnI:(int) i J: (int) j {

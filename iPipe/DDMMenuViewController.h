@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@import AVFoundation;
+
 @interface DDMMenuViewController : UIViewController
+
+@property (nonatomic) AVAudioPlayer *backgroundMusicPlayer;
 
 @end
