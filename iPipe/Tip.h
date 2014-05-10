@@ -2,7 +2,7 @@
 //  Tip.h
 //  iPipe
 //
-//  Created by Salvador Pamanes on 17/04/14.
+//  Created by Salvador Pamanes on 09/05/14.
 //  Copyright (c) 2014 Ivan Diaz. All rights reserved.
 //
 
@@ -12,7 +12,7 @@
 
 @interface Tip : NSManagedObject
 
-@property (nonatomic, retain) NSString * tip;
 @property (nonatomic, retain) NSNumber * timestamp;
+@property (nonatomic, retain) NSString * tip;
 
 @end

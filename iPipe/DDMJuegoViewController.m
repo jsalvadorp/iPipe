@@ -47,6 +47,7 @@ const DDMPipeEnd possibleEnds[] = {
     CGFloat max;
     CGFloat delta;
     
+    int placedPipes;
 
     NSTimer *timer;
 }
@@ -141,6 +142,8 @@ const DDMPipeEnd possibleEnds[] = {
     drippingJ = faucetJ;
     drippingEnd = DDMPipeEndLeft;
     
+    placedPipes = 0;
+    
     self.progIV.frame = CGRectMake(0.0, 0.0, 0.0, origenY);
     timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerDisparo:) userInfo:nil repeats:YES];
 }
@@ -204,7 +207,18 @@ const DDMPipeEnd possibleEnds[] = {
     
     for(int i = 0; i < width; i++) {
         for(int j = 0; j < height; j++) {
-            if([_tiles[i][j] pipe] != nil) {
+            
+            if([_tiles[i][j] pipe] == nil) {
+                
+            }/* else if([_tiles[i][j] pipe].type == DDMPipeTypeDrain) {
+                dict[@"drain"] = @{@"i" : [NSNumber numberWithInt:i],
+                                   @"j" : [NSNumber numberWithInt:j],
+                                   @"end" : [NSNumber numberWithInt:[_tiles[i][j] pipe].ends]};
+            } else if([_tiles[i][j] pipe].type == DDMPipeTypeFaucet) {
+                dict[@"faucet"] = @{@"i" : [NSNumber numberWithInt:i],
+                                    @"j" : [NSNumber numberWithInt:j],
+                                    @"end" : [NSNumber numberWithInt:[_tiles[i][j] pipe].ends]};
+            }*/ else {
                 [arr addObject:@{@"i" : [NSNumber numberWithInt:i],
                                  @"j" : [NSNumber numberWithInt:j],
                                  @"end" : [NSNumber numberWithInt:[_tiles[i][j] pipe].ends]}];
@@ -212,14 +226,51 @@ const DDMPipeEnd possibleEnds[] = {
         }
     }
     
+    dict[@"pipes"] = arr;
+    
+    
+    NSMutableArray *queue = [[NSMutableArray alloc] init];
+    
+    for(DDMPipe *pipe in _pipeQueue) {
+        [queue addObject:@{@"end" : [NSNumber numberWithInt:pipe.ends]}];
+        
+        
+    }
+    
+    dict[@"queue"] = queue;
+    
     NSError *error;
     NSData *jsonData =
-        [NSJSONSerialization dataWithJSONObject:self
-                                        options:(NSJSONWritingOptions)0
-                                          error:&error];
+    [NSJSONSerialization dataWithJSONObject:dict
+                                    options:(NSJSONWritingOptions)0
+                                      error:&error];
     
     return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 }
+
+- (void) loadGameState {
+    NSString *str = self.juego.state;
+    NSError *e;
+    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData: [str dataUsingEncoding:NSUTF8StringEncoding] options: NSJSONReadingMutableContainers
+        error: &e];
+    
+    wasted = [dict[@"wasted"] doubleValue];
+    placedPipes = [dict[@"placedPipes"] intValue];
+    NSArray *pipes = dict[@"pipes"];
+    NSArray *queue = dict[@"queue"];
+    
+    for(NSDictionary *p in pipes) {
+        [self insertarPipe:[p[@"end"] integerValue]];
+        
+        [self ponerPipeEnI:p[@"i"] J:p[@"i"]];
+    }
+    
+    for(NSDictionary *p in queue) {
+        [self insertarPipe:[p[@"end"] integerValue]];
+    }
+    
+}
+
 
 - (void) ponerPipeEnI:(int) i J: (int) j {
     if([_tiles[i][j] pipe] == nil) {
@@ -245,6 +296,8 @@ const DDMPipeEnd possibleEnds[] = {
         ((DDMTile *)_tiles[i][j]).pipe = _pipeQueue[0];
         DDMPipe *pipe = _pipeQueue[0];
         [_pipeQueue removeObjectAtIndex:0];
+        
+        placedPipes++;
         
         //[self insertarPipe];
         
@@ -406,4 +459,7 @@ const DDMPipeEnd possibleEnds[] = {
     return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
+- (IBAction)guardarPresionado:(id)sender {
+    NSLog(@"%@", [self gameState]);
+}
 @end

@@ -2,7 +2,7 @@
 //  Juego.h
 //  iPipe
 //
-//  Created by Isabel Guevara on 4/19/14.
+//  Created by Salvador Pamanes on 09/05/14.
 //  Copyright (c) 2014 Ivan Diaz. All rights reserved.
 //
 
@@ -12,7 +12,9 @@
 
 @interface Juego : NSManagedObject
 
+@property (nonatomic, retain) NSNumber * new;
 @property (nonatomic, retain) NSString * nombre;
 @property (nonatomic, retain) NSNumber * puntos;
+@property (nonatomic, retain) NSString * state;
 
 @end

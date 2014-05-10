@@ -29,11 +29,9 @@
 		9C500AF0190B9E5000FA0773 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C500AC8190B9E5000FA0773 /* InfoPlist.strings */; };
 		9C500AF8190B9E5000FA0773 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C500AD2190B9E5000FA0773 /* Images.xcassets */; };
 		9C500AF9190B9E5000FA0773 /* iPipe-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C500AD3190B9E5000FA0773 /* iPipe-Info.plist */; };
-		9C500AFA190B9E5000FA0773 /* Juego.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C500AD6190B9E5000FA0773 /* Juego.m */; };
 		9C500AFB190B9E5000FA0773 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C500AD7190B9E5000FA0773 /* main.m */; };
 		9C500AFC190B9E5000FA0773 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9C500AD8190B9E5000FA0773 /* Model.xcdatamodeld */; };
 		9C500AFD190B9E5000FA0773 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C500ADA190B9E5000FA0773 /* Storyboard.storyboard */; };
-		9C500AFE190B9E5000FA0773 /* Tip.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C500ADC190B9E5000FA0773 /* Tip.m */; };
 		9C7679AC19140285004A39E3 /* dl.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C76799D19140285004A39E3 /* dl.png */; };
 		9C7679AD19140285004A39E3 /* dlw.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C76799E19140285004A39E3 /* dlw.png */; };
 		9C7679AE19140285004A39E3 /* dr.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C76799F19140285004A39E3 /* dr.png */; };
@@ -64,6 +62,8 @@
 		C483516C191D5C5D00C4A919 /* queuebg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C483516B191D5C5D00C4A919 /* queuebg.jpg */; };
 		C4835173191D685C00C4A919 /* waterPantallas.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C4835171191D685C00C4A919 /* waterPantallas.mp3 */; };
 		C4835174191D685C00C4A919 /* waterJuego.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C4835172191D685C00C4A919 /* waterJuego.mp3 */; };
+		DA43C67E191DA3EA00C35E10 /* Juego.m in Sources */ = {isa = PBXBuildFile; fileRef = DA43C67D191DA3EA00C35E10 /* Juego.m */; };
+		DA43C681191DA3EB00C35E10 /* Tip.m in Sources */ = {isa = PBXBuildFile; fileRef = DA43C680191DA3EB00C35E10 /* Tip.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,13 +112,9 @@
 		9C500AD2190B9E5000FA0773 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9C500AD3190B9E5000FA0773 /* iPipe-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "iPipe-Info.plist"; sourceTree = "<group>"; };
 		9C500AD4190B9E5000FA0773 /* iPipe-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iPipe-Prefix.pch"; sourceTree = "<group>"; };
-		9C500AD5190B9E5000FA0773 /* Juego.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Juego.h; sourceTree = "<group>"; };
-		9C500AD6190B9E5000FA0773 /* Juego.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Juego.m; sourceTree = "<group>"; };
 		9C500AD7190B9E5000FA0773 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9C500AD9190B9E5000FA0773 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9C500ADA190B9E5000FA0773 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
-		9C500ADB190B9E5000FA0773 /* Tip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tip.h; sourceTree = "<group>"; };
-		9C500ADC190B9E5000FA0773 /* Tip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tip.m; sourceTree = "<group>"; };
 		9C76799D19140285004A39E3 /* dl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dl.png; sourceTree = "<group>"; };
 		9C76799E19140285004A39E3 /* dlw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dlw.png; sourceTree = "<group>"; };
 		9C76799F19140285004A39E3 /* dr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dr.png; sourceTree = "<group>"; };
@@ -150,6 +146,10 @@
 		C483516B191D5C5D00C4A919 /* queuebg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = queuebg.jpg; sourceTree = "<group>"; };
 		C4835171191D685C00C4A919 /* waterPantallas.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = waterPantallas.mp3; sourceTree = "<group>"; };
 		C4835172191D685C00C4A919 /* waterJuego.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = waterJuego.mp3; sourceTree = "<group>"; };
+		DA43C67C191DA3EA00C35E10 /* Juego.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Juego.h; sourceTree = "<group>"; };
+		DA43C67D191DA3EA00C35E10 /* Juego.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Juego.m; sourceTree = "<group>"; };
+		DA43C67F191DA3EB00C35E10 /* Tip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tip.h; sourceTree = "<group>"; };
+		DA43C680191DA3EB00C35E10 /* Tip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tip.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +179,10 @@
 		9C500AA7190B9E5000FA0773 /* iPipe */ = {
 			isa = PBXGroup;
 			children = (
+				DA43C67F191DA3EB00C35E10 /* Tip.h */,
+				DA43C680191DA3EB00C35E10 /* Tip.m */,
+				DA43C67C191DA3EA00C35E10 /* Juego.h */,
+				DA43C67D191DA3EA00C35E10 /* Juego.m */,
 				C4835171191D685C00C4A919 /* waterPantallas.mp3 */,
 				C4835172191D685C00C4A919 /* waterJuego.mp3 */,
 				9C76799C19140285004A39E3 /* imagenes */,
@@ -211,12 +215,8 @@
 				9C500AD2190B9E5000FA0773 /* Images.xcassets */,
 				9C500AD3190B9E5000FA0773 /* iPipe-Info.plist */,
 				9C500AD4190B9E5000FA0773 /* iPipe-Prefix.pch */,
-				9C500AD5190B9E5000FA0773 /* Juego.h */,
-				9C500AD6190B9E5000FA0773 /* Juego.m */,
 				9C500AD7190B9E5000FA0773 /* main.m */,
 				9C500AD8190B9E5000FA0773 /* Model.xcdatamodeld */,
-				9C500ADB190B9E5000FA0773 /* Tip.h */,
-				9C500ADC190B9E5000FA0773 /* Tip.m */,
 			);
 			path = iPipe;
 			sourceTree = "<group>";
@@ -444,11 +444,11 @@
 				9C500AEE190B9E5000FA0773 /* DDMPipe.m in Sources */,
 				9C500AE8190B9E5000FA0773 /* DDMInstruccionesViewController.m in Sources */,
 				9C500AEC190B9E5000FA0773 /* DDMMenuViewController.m in Sources */,
-				9C500AFE190B9E5000FA0773 /* Tip.m in Sources */,
 				9C500AED190B9E5000FA0773 /* DDMMuestraTipViewController.m in Sources */,
 				9C500AE7190B9E5000FA0773 /* DDMCargarViewController.m in Sources */,
-				9C500AFA190B9E5000FA0773 /* Juego.m in Sources */,
 				9C500AEB190B9E5000FA0773 /* DDMManejoDB.m in Sources */,
+				DA43C67E191DA3EA00C35E10 /* Juego.m in Sources */,
+				DA43C681191DA3EB00C35E10 /* Tip.m in Sources */,
 				9C500AE9190B9E5000FA0773 /* DDMjuegoNuevoViewController.m in Sources */,
 				9C500AEF190B9E5000FA0773 /* DDMTile.m in Sources */,
 				9C500AE5190B9E5000FA0773 /* DDMAppDelegate.m in Sources */,

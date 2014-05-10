@@ -2,7 +2,7 @@
 //  Juego.m
 //  iPipe
 //
-//  Created by Isabel Guevara on 4/19/14.
+//  Created by Salvador Pamanes on 09/05/14.
 //  Copyright (c) 2014 Ivan Diaz. All rights reserved.
 //
 
@@ -11,7 +11,9 @@
 
 @implementation Juego
 
+@dynamic new;
 @dynamic nombre;
 @dynamic puntos;
+@dynamic state;
 
 @end

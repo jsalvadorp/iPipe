@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *fondoIV;
 @property (strong, nonatomic) IBOutlet UIImageView *progIV;
+- (IBAction)guardarPresionado:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UILabel *puntosL;
 
