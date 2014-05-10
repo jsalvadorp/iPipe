@@ -1,5 +1,5 @@
 //
-//  Juego.h
+//  Ranking.h
 //  iPipe
 //
 //  Created by Salvador Pamanes on 10/05/14.
@@ -10,11 +10,10 @@
 #import <CoreData/CoreData.h>
 
 
-@interface Juego : NSManagedObject
+@interface Ranking : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * new;
 @property (nonatomic, retain) NSString * nombre;
-@property (nonatomic, retain) NSString * state;
+@property (nonatomic, retain) NSNumber * puntos;
 @property (nonatomic, retain) NSNumber * dificultad;
 
 @end

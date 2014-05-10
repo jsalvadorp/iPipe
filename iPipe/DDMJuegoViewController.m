@@ -9,6 +9,7 @@
 #import "DDMJuegoViewController.h"
 #import "DDMTile.h"
 #import "DDMPipe.h"
+#import "DDMManejoDB.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
 #import <stdlib.h>
@@ -20,6 +21,33 @@ const DDMPipeEnd possibleEnds[] = {
     DDMPipeEndDown | DDMPipeEndRight,
     DDMPipeEndUp | DDMPipeEndDown,
     DDMPipeEndLeft | DDMPipeEndRight
+};
+
+CGFloat endDistribution[][6] = {
+    { // facil
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.25,
+        0.25
+    },
+    { // medio
+        0.17,
+        0.17,
+        0.17,
+        0.17,
+        0.16,
+        0.16
+    },
+    { // dificil
+        0.20,
+        0.20,
+        0.20,
+        0.20,
+        0.10,
+        0.10
+    }
 };
 
 @interface DDMJuegoViewController () {
@@ -70,6 +98,8 @@ const DDMPipeEnd possibleEnds[] = {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSLog(@"juego nombre: %@ dificultad %@ nuevo %@ state %@", juego.nombre, juego.dificultad, juego.new, juego.state);
     // Do any additional setup after loading the view.
     [UIImage imageNamed:@"water.png"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.gif"]];
@@ -109,16 +139,44 @@ const DDMPipeEnd possibleEnds[] = {
     }
     _pipeQueue = [[NSMutableArray alloc] init];
     
-    if(true) {
-        [self makeQueue];
+    if([self.juego.new boolValue]) {
+        [self nuevoJuego];
     } else {
-    
+        [self loadGameState];
     }
     
     
     
     [self.fondoIV addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)]];
     self.fondoIV.userInteractionEnabled = YES;
+    
+    
+    
+    self.progIV.frame = CGRectMake(0.0, 0.0, 0.0, origenY);
+    timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerDisparo:) userInfo:nil repeats:YES];
+}
+
+- (void) nuevoJuego {
+    
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
+    
+    for(int end = 0; end < 6; end++) {
+        for(int i = 0; i < (width + 1) * height * endDistribution[[juego.dificultad integerValue]][end]; i++) {
+            [arr addObject:
+             @[[NSNumber numberWithInt:possibleEnds[end]],
+               [NSNumber numberWithInt:(arc4random() % 0xFFFFFF)]]];
+        }
+    }
+    [arr addObject:
+     @[[NSNumber numberWithInt:possibleEnds[(arc4random() % 0xFFFFFF) % 6]],
+       [NSNumber numberWithInt:arc4random()]]];
+    
+    [arr sortUsingComparator:^NSComparisonResult(id a, id b){return [a[1] compare: b[1]];}];
+    
+    for(int i = 0; i < arr.count; i++) {
+        [self insertarPipe:[arr[i][0] integerValue]];
+    }
+    
     
     int faucetJ, drainJ;
     
@@ -144,41 +202,67 @@ const DDMPipeEnd possibleEnds[] = {
     
     placedPipes = 0;
     
-    self.progIV.frame = CGRectMake(0.0, 0.0, 0.0, origenY);
-    timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerDisparo:) userInfo:nil repeats:YES];
+    NSLog(@"nuevo");
 }
 
-- (void) makeQueue {
-    static CGFloat fracEnd[] = {
-        0.17,
-        0.17,
-        0.17,
-        0.17,
-        0.16,
-        0.16
-    };
+- (void) loadGameState {
+    NSString *str = self.juego.state;
+    NSError *e;
+    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData: [str dataUsingEncoding:NSUTF8StringEncoding] options: 0
+                                                           error: &e];
+    int i, j;
+    DDMPipeEnd end;
+    DDMPipe *drain, *faucet;
     
-    NSMutableArray *arr = [[NSMutableArray alloc] init];
     
-    for(int end = 0; end < 6; end++) {
-        for(int i = 0; i < width * height * fracEnd[end]; i++) {
-            [arr addObject:
-             @[[NSNumber numberWithInt:possibleEnds[end]],
-               [NSNumber numberWithInt:(arc4random() % 0xFFFFFF)]]];
-        }
+    i = [dict[@"drain"][@"i"] integerValue];
+    j = [dict[@"drain"][@"j"] integerValue];
+    end = [dict[@"drain"][@"end"] integerValue];
+    drain = [DDMPipe drainWithFrame:CGRectMake(origenX + i * gridSize,
+                                               origenY + j * gridSize,
+                                               gridSize,
+                                               gridSize)];
+    [self.view addSubview:drain.sprite];
+    [_tiles[i][j] setPipe: drain];
+    
+    
+    
+    i = [dict[@"faucet"][@"i"] integerValue];
+    j = [dict[@"faucet"][@"j"] integerValue];
+    end = [dict[@"faucet"][@"end"] integerValue];
+    faucet = [DDMPipe faucetWithFrame:CGRectMake(origenX + i * gridSize,
+                                                 origenY + j * gridSize,
+                                                 gridSize,
+                                                 gridSize)];
+    [self.view addSubview:faucet.sprite];
+    [_tiles[i][j] setPipe: faucet];
+    
+    drippingI = i + 1;
+    drippingJ = j;
+    drippingEnd = end;
+    
+    
+    wasted = [dict[@"wasted"] doubleValue];
+    placedPipes = [dict[@"placedPipes"] intValue];
+    NSArray *pipes = dict[@"pipes"];
+    NSArray *queue = dict[@"queue"];
+    
+    for(NSDictionary *p in pipes) {
+        [self insertarPipe:[p[@"end"] integerValue]];
+        
+        [self ponerPipeEnI:[p[@"i"] integerValue] J:[p[@"j"] integerValue]];
+        
+        
+        NSLog(@"save pipe %@ %@", p[@"i"], p[@"j"]);
     }
-    [arr addObject:
-     @[[NSNumber numberWithInt:possibleEnds[(arc4random() % 0xFFFFFF) % 6]],
-       [NSNumber numberWithInt:arc4random()]]];
     
-    [arr sortUsingComparator:^NSComparisonResult(id a, id b){return [a[1] compare: b[1]];}];
-    
-    for(int i = 0; i < arr.count; i++) {
-        [self insertarPipe:[arr[i][0] integerValue]];
+    for(NSDictionary *q in queue) {
+        [self insertarPipe:[q[@"end"] integerValue]];
     }
     
     
     
+    //NSLog(@"load");
 }
 
 - (void) timerDisparo: (NSTimer *) timer {
@@ -199,7 +283,7 @@ const DDMPipeEnd possibleEnds[] = {
     }
 }
 
-- (NSString *) gameState {
+- (void) saveGameState {
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     dict[@"wasted"] = [NSNumber numberWithDouble: wasted];
     
@@ -210,7 +294,7 @@ const DDMPipeEnd possibleEnds[] = {
             
             if([_tiles[i][j] pipe] == nil) {
                 
-            }/* else if([_tiles[i][j] pipe].type == DDMPipeTypeDrain) {
+            } else if([_tiles[i][j] pipe].type == DDMPipeTypeDrain) {
                 dict[@"drain"] = @{@"i" : [NSNumber numberWithInt:i],
                                    @"j" : [NSNumber numberWithInt:j],
                                    @"end" : [NSNumber numberWithInt:[_tiles[i][j] pipe].ends]};
@@ -218,10 +302,11 @@ const DDMPipeEnd possibleEnds[] = {
                 dict[@"faucet"] = @{@"i" : [NSNumber numberWithInt:i],
                                     @"j" : [NSNumber numberWithInt:j],
                                     @"end" : [NSNumber numberWithInt:[_tiles[i][j] pipe].ends]};
-            }*/ else {
+            } else {
                 [arr addObject:@{@"i" : [NSNumber numberWithInt:i],
                                  @"j" : [NSNumber numberWithInt:j],
                                  @"end" : [NSNumber numberWithInt:[_tiles[i][j] pipe].ends]}];
+                //NSLog(@"save pipe %d %d", i, j);
             }
         }
     }
@@ -245,31 +330,15 @@ const DDMPipeEnd possibleEnds[] = {
                                     options:(NSJSONWritingOptions)0
                                       error:&error];
     
-    return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    NSString *str = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    self.juego.state = str;
+    self.juego.new = @NO;
+    [[DDMManejoDB instancia] saveContext];
+    
+    //NSLog(@"guardo %@", self.juego.state);
 }
 
-- (void) loadGameState {
-    NSString *str = self.juego.state;
-    NSError *e;
-    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData: [str dataUsingEncoding:NSUTF8StringEncoding] options: NSJSONReadingMutableContainers
-        error: &e];
-    
-    wasted = [dict[@"wasted"] doubleValue];
-    placedPipes = [dict[@"placedPipes"] intValue];
-    NSArray *pipes = dict[@"pipes"];
-    NSArray *queue = dict[@"queue"];
-    
-    for(NSDictionary *p in pipes) {
-        [self insertarPipe:[p[@"end"] integerValue]];
-        
-        [self ponerPipeEnI:p[@"i"] J:p[@"i"]];
-    }
-    
-    for(NSDictionary *p in queue) {
-        [self insertarPipe:[p[@"end"] integerValue]];
-    }
-    
-}
+
 
 
 - (void) ponerPipeEnI:(int) i J: (int) j {
@@ -435,7 +504,7 @@ const DDMPipeEnd possibleEnds[] = {
     // Dispose of any resources that can be recreated.
 }
 
-/*
+/**/
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -443,8 +512,9 @@ const DDMPipeEnd possibleEnds[] = {
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    [timer invalidate];
 }
-*/
+/**/
 
 - (IBAction)salirPresionado:(id)sender {
     [self.navigationController popToRootViewControllerAnimated:YES];
@@ -460,6 +530,7 @@ const DDMPipeEnd possibleEnds[] = {
 }
 
 - (IBAction)guardarPresionado:(id)sender {
-    NSLog(@"%@", [self gameState]);
+    //NSLog(@"%@", [self gameState]);
+    [self saveGameState];
 }
 @end

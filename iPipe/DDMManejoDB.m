@@ -159,13 +159,13 @@
     return nuevoTip;
 }
 
-- (Juego *) insertarJuego: (NSString *) nombre
+- (Juego *) insertarJuego: (NSString *) nombre dificultad: (int) dificultad
 {
     NSManagedObjectContext *context = [self managedObjectContext];
     Juego *nuevoJuego = [NSEntityDescription insertNewObjectForEntityForName:@"Juego" inManagedObjectContext:context];
     nuevoJuego.nombre = nombre;
-    nuevoJuego.puntos = @0;
-    NSLog(@"tip %@ : %@", nuevoJuego.nombre, nuevoJuego.puntos);
+    nuevoJuego.dificultad = [NSNumber numberWithInt:dificultad];
+    nuevoJuego.new = @YES;
     [self saveContext];
     return nuevoJuego;
 }

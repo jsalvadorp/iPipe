@@ -8,6 +8,7 @@
 
 #import "DDMMuestraTipViewController.h"
 #import "DDMManejoDB.h"
+#import "DDMTieneJuego.h"
 
 @interface DDMMuestraTipViewController ()
 
@@ -59,7 +60,7 @@
     return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
-/*
+/**/
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -67,7 +68,10 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    id<DDMTieneJuego>dest = segue.destinationViewController;
+    dest.juego = juego;
 }
-*/
+/**/
 
 @end

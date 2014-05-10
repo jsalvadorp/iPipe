@@ -1,19 +1,18 @@
 //
-//  Juego.m
+//  Ranking.m
 //  iPipe
 //
 //  Created by Salvador Pamanes on 10/05/14.
 //  Copyright (c) 2014 Ivan Diaz. All rights reserved.
 //
 
-#import "Juego.h"
+#import "Ranking.h"
 
 
-@implementation Juego
+@implementation Ranking
 
-@dynamic new;
 @dynamic nombre;
-@dynamic state;
+@dynamic puntos;
 @dynamic dificultad;
 
 @end

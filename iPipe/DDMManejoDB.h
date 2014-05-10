@@ -21,10 +21,12 @@
 + (DDMManejoDB *) instancia;
 //Metodos para insertar en la BD
 - (Tip *) insertarTip: (NSString *) ntip conTiempo: (long long) tiempo;
-- (Juego *) insertarJuego: (NSString *) nombre;
+- (Juego *) insertarJuego: (NSString *) nombre dificultad: (int) dificultad;
 - (void) descargarTips;
 
 - (Tip *) randomTip;
 - (NSArray *) juegos;
+
+- (void)saveContext;
 
 @end

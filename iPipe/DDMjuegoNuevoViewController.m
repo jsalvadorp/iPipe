@@ -69,7 +69,7 @@
     // Pass the selected object to the new view controller.
     if(sender == self.startB && ![self.nombreTF.text isEqualToString:@""]) {
         DDMManejoDB *db = [DDMManejoDB instancia];
-        Juego *juego = [db insertarJuego:self.nombreTF.text];
+        Juego *juego = [db insertarJuego:self.nombreTF.text dificultad:self.dificultadSC.selectedSegmentIndex];
         id<DDMTieneJuego>dest = segue.destinationViewController;
         dest.juego = juego;
         //[self performSegueWithIdentifier: @"SegueToScene1" sender: self];

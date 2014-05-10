@@ -12,6 +12,7 @@
 @interface DDMjuegoNuevoViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UITextField *nombreTF;
 @property (strong, nonatomic) IBOutlet UIButton *startB;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *dificultadSC;
 
 @property (nonatomic) AVAudioPlayer * backgroundMusicPlayer;
 
