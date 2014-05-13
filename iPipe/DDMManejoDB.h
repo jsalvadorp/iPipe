@@ -29,4 +29,8 @@
 
 - (void)saveContext;
 
+- (BOOL) insertarRanking: (NSString *) nombre dificultad: (int) dificultad puntos: (int) puntos;
+- (NSArray *) rankings;
+
+
 @end

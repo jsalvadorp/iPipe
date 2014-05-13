@@ -62,6 +62,8 @@
 		C483516C191D5C5D00C4A919 /* queuebg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C483516B191D5C5D00C4A919 /* queuebg.jpg */; };
 		C4835173191D685C00C4A919 /* waterPantallas.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C4835171191D685C00C4A919 /* waterPantallas.mp3 */; };
 		C4835174191D685C00C4A919 /* waterJuego.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C4835172191D685C00C4A919 /* waterJuego.mp3 */; };
+		DAAD954D1921A339005D16CC /* DDMRankingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAD954C1921A339005D16CC /* DDMRankingViewController.m */; };
+		DAAD95501921A4D8005D16CC /* DDMRankingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAD954F1921A4D8005D16CC /* DDMRankingTableViewCell.m */; };
 		DAD0D85A191E7DB30057B3BD /* Juego.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D859191E7DB30057B3BD /* Juego.m */; };
 		DAD0D85D191E7DB40057B3BD /* Tip.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D85C191E7DB40057B3BD /* Tip.m */; };
 		DAD0D860191E7DB40057B3BD /* Ranking.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D85F191E7DB40057B3BD /* Ranking.m */; };
@@ -147,6 +149,10 @@
 		C483516B191D5C5D00C4A919 /* queuebg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = queuebg.jpg; sourceTree = "<group>"; };
 		C4835171191D685C00C4A919 /* waterPantallas.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = waterPantallas.mp3; sourceTree = "<group>"; };
 		C4835172191D685C00C4A919 /* waterJuego.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = waterJuego.mp3; sourceTree = "<group>"; };
+		DAAD954B1921A339005D16CC /* DDMRankingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMRankingViewController.h; sourceTree = "<group>"; };
+		DAAD954C1921A339005D16CC /* DDMRankingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMRankingViewController.m; sourceTree = "<group>"; };
+		DAAD954E1921A4D8005D16CC /* DDMRankingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMRankingTableViewCell.h; sourceTree = "<group>"; };
+		DAAD954F1921A4D8005D16CC /* DDMRankingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMRankingTableViewCell.m; sourceTree = "<group>"; };
 		DAD0D858191E7DB30057B3BD /* Juego.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Juego.h; sourceTree = "<group>"; };
 		DAD0D859191E7DB30057B3BD /* Juego.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Juego.m; sourceTree = "<group>"; };
 		DAD0D85B191E7DB40057B3BD /* Tip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tip.h; sourceTree = "<group>"; };
@@ -197,6 +203,8 @@
 				9C500AB3190B9E5000FA0773 /* DDMCargarCellTableViewCell.h */,
 				9C500AB4190B9E5000FA0773 /* DDMCargarCellTableViewCell.m */,
 				9C500AB5190B9E5000FA0773 /* DDMCargarViewController.h */,
+				DAAD954B1921A339005D16CC /* DDMRankingViewController.h */,
+				DAAD954C1921A339005D16CC /* DDMRankingViewController.m */,
 				9C500AB6190B9E5000FA0773 /* DDMCargarViewController.m */,
 				9C500AB7190B9E5000FA0773 /* DDMInstruccionesViewController.h */,
 				9C500AB8190B9E5000FA0773 /* DDMInstruccionesViewController.m */,
@@ -213,6 +221,8 @@
 				9C500AC3190B9E5000FA0773 /* DDMPipe.h */,
 				9C500AC4190B9E5000FA0773 /* DDMPipe.m */,
 				9C500ADA190B9E5000FA0773 /* Storyboard.storyboard */,
+				DAAD954E1921A4D8005D16CC /* DDMRankingTableViewCell.h */,
+				DAAD954F1921A4D8005D16CC /* DDMRankingTableViewCell.m */,
 				9C500AC5190B9E5000FA0773 /* DDMTieneJuego.h */,
 				9C500AC6190B9E5000FA0773 /* DDMTile.h */,
 				9C500AC7190B9E5000FA0773 /* DDMTile.m */,
@@ -448,10 +458,12 @@
 				9C500AE6190B9E5000FA0773 /* DDMCargarCellTableViewCell.m in Sources */,
 				9C500AEE190B9E5000FA0773 /* DDMPipe.m in Sources */,
 				9C500AE8190B9E5000FA0773 /* DDMInstruccionesViewController.m in Sources */,
+				DAAD95501921A4D8005D16CC /* DDMRankingTableViewCell.m in Sources */,
 				9C500AEC190B9E5000FA0773 /* DDMMenuViewController.m in Sources */,
 				9C500AED190B9E5000FA0773 /* DDMMuestraTipViewController.m in Sources */,
 				9C500AE7190B9E5000FA0773 /* DDMCargarViewController.m in Sources */,
 				9C500AEB190B9E5000FA0773 /* DDMManejoDB.m in Sources */,
+				DAAD954D1921A339005D16CC /* DDMRankingViewController.m in Sources */,
 				DAD0D85A191E7DB30057B3BD /* Juego.m in Sources */,
 				DAD0D85D191E7DB40057B3BD /* Tip.m in Sources */,
 				9C500AE9190B9E5000FA0773 /* DDMjuegoNuevoViewController.m in Sources */,

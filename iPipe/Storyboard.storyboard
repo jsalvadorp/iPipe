@@ -189,10 +189,10 @@
             </objects>
             <point key="canvasLocation" x="282" y="-845"/>
         </scene>
-        <!--View Controller - Ranking-->
+        <!--Ranking View Controller - Ranking-->
         <scene sceneID="b7n-ll-OzG">
             <objects>
-                <viewController id="A5I-gl-959" sceneMemberID="viewController">
+                <viewController id="A5I-gl-959" customClass="DDMRankingViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cm0-MZ-VMg"/>
                         <viewControllerLayoutGuide type="bottom" id="KtN-R4-UGa"/>
@@ -206,7 +206,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Jd6-FI-0Jj">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="Jd6-FI-0Jj" customClass="DDMRankingTableViewCell">
                                         <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jd6-FI-0Jj" id="kXt-XZ-za7">
@@ -227,6 +227,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="numNombreL" destination="McB-Qj-ePn" id="vGW-1o-s5J"/>
+                                            <outlet property="puntosL" destination="paQ-18-R85" id="Cdw-bZ-6TG"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -253,7 +257,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZJ-M4-VVZ">
-                                <rect key="frame" x="103" y="270" width="135" height="61"/>
+                                <rect key="frame" x="98" y="286" width="135" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Start" image="empezar.png">
                                     <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>

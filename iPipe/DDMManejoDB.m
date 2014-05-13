@@ -8,6 +8,7 @@
 
 #import "Tip.h"
 #import "Juego.h"
+#import "Ranking.h"
 #import "DDMManejoDB.h"
 #import <CoreData/CoreData.h>
 #import <stdlib.h>
@@ -170,7 +171,35 @@
     return nuevoJuego;
 }
 
+- (BOOL) insertarRanking: (NSString *) nombre dificultad: (int) dificultad puntos: (int) puntos
+{
+    NSMutableArray *values = [[NSMutableArray alloc] initWithContentsOfFile:@"rankings.plist"];
+    
+    if(values == nil)
+        values = [[NSMutableArray alloc] init];
+    
+    [values addObject:
+     @{@"nombre" : nombre,
+       @"dificultad" : [NSNumber numberWithInt: dificultad],
+       @"puntos" : [NSNumber numberWithInt: puntos]}];
+    
+    [values sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        return [obj1[@"puntos"] compare:obj2[@"puntos"]];
+    }];
+    
+    while(values.count > 10)
+        [values removeLastObject];
+    
+    [values writeToFile:@"rankings.plist" atomically:YES];
+    
+    return YES;
+}
 
+- (NSArray *) rankings {
+     NSMutableArray *values = [[NSMutableArray alloc] initWithContentsOfFile:@"rankings.plist"];
+    
+    return values;
+}
 
 - (void) descargarTips {
     
