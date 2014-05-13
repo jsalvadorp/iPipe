@@ -28,6 +28,7 @@
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
@@ -67,13 +68,29 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if(sender == self.startB && ![self.nombreTF.text isEqualToString:@""]) {
+    
+
+    if(sender == self.startB /*&& ![self.nombreTF.text isEqualToString:@""]*/) {
+        
+        if ([self.nombreTF.text isEqualToString:@""]){
+            
+            UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle:@"Pon tu nombre por favor"
+                                  message:nil
+                                  delegate:self
+                                  cancelButtonTitle:@"Cancel"
+                                  otherButtonTitles:@"OK", nil];
+            [alert show];
+            
+        } else {
         DDMManejoDB *db = [DDMManejoDB instancia];
         Juego *juego = [db insertarJuego:self.nombreTF.text dificultad:self.dificultadSC.selectedSegmentIndex];
         id<DDMTieneJuego>dest = segue.destinationViewController;
         dest.juego = juego;
+        }
         //[self performSegueWithIdentifier: @"SegueToScene1" sender: self];
-    }
+        }
+    
 }
 /**/
 

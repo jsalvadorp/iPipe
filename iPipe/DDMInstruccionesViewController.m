@@ -29,14 +29,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    /**/
+    /**
     _instrucciones = @[@{@"texto" : @"El agua se está desperdiciando cada segundo. ¡Construye una tubería para cerrar la fuga!",
                          @"imagen" : [UIImage imageNamed: @"instrucciones/0.jpg"]},
                        @{@"texto" : @"Te daremos piezas para construirla, una por una. Debes planear cómo usarlas para llevar el agua a la coladera.",
                          @"imagen" : [UIImage imageNamed: @"instrucciones/1.jpg"]},
                        @{@"texto" : @"Si desperdicias más del agua permitida, ¡estás fuera!",
                          @"imagen" : [UIImage imageNamed: @"instrucciones/2.jpg"]}];
-    /**/
+    **/
     
 }
 
