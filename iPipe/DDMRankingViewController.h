@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface DDMRankingViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *rankingTV;
 
 @end

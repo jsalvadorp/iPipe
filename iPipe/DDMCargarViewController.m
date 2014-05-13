@@ -42,6 +42,10 @@
     juegos = [[DDMManejoDB instancia] juegos];
 }
 
+-(void)viewDidAppear:(BOOL)animated {
+    [[self navigationController] setNavigationBarHidden:NO animated:YES];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -50,6 +54,10 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown || interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+-(NSUInteger)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 #pragma mark - Table View

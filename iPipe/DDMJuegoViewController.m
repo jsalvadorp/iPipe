@@ -267,18 +267,11 @@ CGFloat endDistribution[][6] = {
 
 - (void) timerDisparo: (NSTimer *) timer {
     wasted += delta;
+    self.puntosL.text = [NSString stringWithFormat:@"%d L/%.2lf L", (int)wasted, (double)max];
+    
     if(wasted > max) {
-        /*CGContextRef context = UIGraphicsGetCurrentContext();
-        CGContextSetLineWidth(context, 4.0);
-        CGContextSetRGBStrokeColor(context, 1.0, 1.0, 0, 1.0); // opaque yellow
-        CGContextMoveToPoint(context, x1, y1); // for suitable definition of x1,y1, etc
-        CGContextAddLineToPoint(context, x2, y2);
-        CGContextStrokePath(context);*/
-        //[timer invalidate];
-        self.puntosL.text = [NSString stringWithFormat:@"%d L", (int)wasted];
         [self terminar:FALSE];
     } else {
-        self.puntosL.text = [NSString stringWithFormat:@"%d L", (int)wasted];
         self.progIV.frame = CGRectMake(0.0, 0.0, 7 * gridSize * (wasted / max), origenY);
     }
 }
@@ -461,23 +454,38 @@ CGFloat endDistribution[][6] = {
     [timer invalidate];
     
     if (gano){
+        NSString *msg = ([[DDMManejoDB instancia] insertarRanking:self.juego.nombre
+                                                         dificultad:[self.juego.dificultad integerValue]
+                                                             puntos:wasted])
+            ? @"¡Nueva puntuación alta!"
+            : @"¡Ganaste!";
+        
         UIAlertView *alert = [[UIAlertView alloc]
-                          initWithTitle:@"GANASTE"
+                          initWithTitle:msg
                           message:nil
                           delegate:self
-                          cancelButtonTitle:@"Cancel"
+                          cancelButtonTitle:nil
                           otherButtonTitles:@"OK", nil];
         [alert show];
     } else {
         UIAlertView *alert = [[UIAlertView alloc]
-                              initWithTitle:@"PERDISTE"
+                              initWithTitle:@"¡Desperdiciaste mucha agua!"
                               message:nil
                               delegate:self
-                              cancelButtonTitle:@"Cancel"
+                              cancelButtonTitle:nil
                               otherButtonTitles:@"OK", nil];
         [alert show];
     }
+    //[self.navigationController popToRootViewControllerAnimated:YES];
     
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [[self navigationController] setNavigationBarHidden:YES animated:YES];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void) tap: (UITapGestureRecognizer *)recognizer {
@@ -527,6 +535,10 @@ CGFloat endDistribution[][6] = {
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
+}
+
+-(NSUInteger)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskLandscapeRight | UIInterfaceOrientationMaskLandscapeLeft;
 }
 
 - (IBAction)guardarPresionado:(id)sender {

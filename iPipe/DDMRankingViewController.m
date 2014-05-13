@@ -33,6 +33,13 @@
     // Do any additional setup after loading the view.
     
     rankings = [[DDMManejoDB instancia] rankings];
+    
+    self.rankingTV.delegate = self;
+    self.rankingTV.dataSource = self;
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [[self navigationController] setNavigationBarHidden:NO animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -78,8 +85,8 @@
      }*/
     
     NSDictionary *j = rankings[indexPath.row];
-    cell.numNombreL.text = [NSString stringWithFormat:@"%02d. %@", indexPath.row, j[@"nombre"]];
-    cell.puntosL.text = j[@"puntos"];
+    cell.numNombreL.text = [NSString stringWithFormat:@"%02d. %@", (indexPath.row + 1), j[@"nombre"]];
+    cell.puntosL.text = [j[@"puntos"] stringValue];
     
     return cell;
 }
@@ -98,6 +105,10 @@
      } else {*/
     //[self performSegueWithIdentifier: @"tip" sender: self];
     /*}*/
+}
+
+-(NSUInteger)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 @end

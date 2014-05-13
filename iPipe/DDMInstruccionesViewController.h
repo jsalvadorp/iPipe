@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface DDMInstruccionesViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIImageView *imagenI;
+@property (weak, nonatomic) IBOutlet UITextView *instruccionTV;
+- (IBAction)backPresionado:(id)sender;
+- (IBAction)nextPresionado:(id)sender;
 
 @end

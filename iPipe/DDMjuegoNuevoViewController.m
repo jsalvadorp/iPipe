@@ -43,7 +43,11 @@
     [self.backgroundMusicPlayer prepareToPlay];
     [self.backgroundMusicPlayer play];
     
-    [self.navigationController setNavigationBarHidden:YES];
+   
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [[self navigationController] setNavigationBarHidden:NO animated:YES];
 }
 
 -(void) quitarTeclado:(UITapGestureRecognizer *) recognizer {
@@ -58,6 +62,10 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown || interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+-(NSUInteger)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 /**/

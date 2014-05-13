@@ -171,17 +171,27 @@
     return nuevoJuego;
 }
 
+- (NSString *) rutaDocuments: (NSString *) archivo {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:archivo];
+    
+    return filePath;
+}
+
 - (BOOL) insertarRanking: (NSString *) nombre dificultad: (int) dificultad puntos: (int) puntos
 {
-    NSMutableArray *values = [[NSMutableArray alloc] initWithContentsOfFile:@"rankings.plist"];
+    NSString *path = [self rutaDocuments: @"rankings.plist"];
+    NSMutableArray *values = [[NSMutableArray alloc] initWithContentsOfFile:path];
     
     if(values == nil)
         values = [[NSMutableArray alloc] init];
     
-    [values addObject:
-     @{@"nombre" : nombre,
-       @"dificultad" : [NSNumber numberWithInt: dificultad],
-       @"puntos" : [NSNumber numberWithInt: puntos]}];
+    NSDictionary *nuevaPunt = @{@"nombre" : nombre,
+                                @"dificultad" : [NSNumber numberWithInt: dificultad],
+                                @"puntos" : [NSNumber numberWithInt: puntos]};
+    
+    [values addObject: nuevaPunt];
     
     [values sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         return [obj1[@"puntos"] compare:obj2[@"puntos"]];
@@ -190,13 +200,13 @@
     while(values.count > 10)
         [values removeLastObject];
     
-    [values writeToFile:@"rankings.plist" atomically:YES];
+    [values writeToFile:path atomically:YES];
     
-    return YES;
+    return [values containsObject:nuevaPunt];
 }
 
 - (NSArray *) rankings {
-     NSMutableArray *values = [[NSMutableArray alloc] initWithContentsOfFile:@"rankings.plist"];
+     NSMutableArray *values = [[NSMutableArray alloc] initWithContentsOfFile:[self rutaDocuments:@"rankings.plist"]];
     
     return values;
 }

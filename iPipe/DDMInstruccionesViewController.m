@@ -10,6 +10,8 @@
 
 @interface DDMInstruccionesViewController () {
     NSArray *_instrucciones;
+    int instActual;
+    
 }
 
 @end
@@ -29,15 +31,29 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    /**
-    _instrucciones = @[@{@"texto" : @"El agua se está desperdiciando cada segundo. ¡Construye una tubería para cerrar la fuga!",
-                         @"imagen" : [UIImage imageNamed: @"instrucciones/0.jpg"]},
-                       @{@"texto" : @"Te daremos piezas para construirla, una por una. Debes planear cómo usarlas para llevar el agua a la coladera.",
-                         @"imagen" : [UIImage imageNamed: @"instrucciones/1.jpg"]},
-                       @{@"texto" : @"Si desperdicias más del agua permitida, ¡estás fuera!",
-                         @"imagen" : [UIImage imageNamed: @"instrucciones/2.jpg"]}];
-    **/
+    /**/
+    _instrucciones = @[@{@"texto" : @"El agua se está desperdiciando litro por litro. ¡Construye una tubería para cerrar la fuga!",
+                         @"imagen" : [UIImage imageNamed: @"0.png"]},
+                       @{@"texto" : @"Hay un máximo de agua que puedes desperdiciar. Si te pasas, ¡estás fuera!",
+                         @"imagen" : [UIImage imageNamed: @"1.png"]},
+                       @{@"texto" : @"Conecta tu tubería a la llave para rescatar el agua.",
+                         @"imagen" : [UIImage imageNamed: @"2.png"]},
+                       @{@"texto" : @"Presiona sobre cualquier lugar vacío de la cuadrícula para colocar el siguiente tubo",
+                         @"imagen" : [UIImage imageNamed: @"4.png"]},
+                       @{@"texto" : @"Debes llevar el agua a la coladera para reciclarla.",
+                         @"imagen" : [UIImage imageNamed: @"3.png"]},
+                       @{@"texto" : @"Si logras llevar el agua a su destino antes de desperdiciarla toda, ¡Ganaste!",
+                         @"imagen" : [UIImage imageNamed: @"5.png"]}];
+    instActual = 0;
+    /**/
+
     
+    self.imagenI.image = _instrucciones[instActual][@"imagen"];
+    self.instruccionTV.text = _instrucciones[instActual][@"texto"];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [[self navigationController] setNavigationBarHidden:NO animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,5 +77,21 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown || interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+-(NSUInteger)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskPortrait;
+}
 
+- (IBAction)backPresionado:(id)sender {
+    instActual = (_instrucciones.count + instActual - 1) % _instrucciones.count;
+    
+    self.imagenI.image = _instrucciones[instActual][@"imagen"];
+    self.instruccionTV.text = _instrucciones[instActual][@"texto"];
+}
+
+- (IBAction)nextPresionado:(id)sender {
+    instActual = (instActual + 1) % _instrucciones.count;
+    
+    self.imagenI.image = _instrucciones[instActual][@"imagen"];
+    self.instruccionTV.text = _instrucciones[instActual][@"texto"];
+}
 @end
