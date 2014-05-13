@@ -75,6 +75,8 @@
 		DAC199E019226E5C004BEA6B /* tec.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAC199DD19226E5C004BEA6B /* tec.jpg */; };
 		DAC199E119226E5C004BEA6B /* pepsico.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAC199DE19226E5C004BEA6B /* pepsico.jpg */; };
 		DAC199E419227092004BEA6B /* DDMCreditosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC199E319227092004BEA6B /* DDMCreditosViewController.m */; };
+		DAC199E719227D4A004BEA6B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DAC199E519227D4A004BEA6B /* Icon.png */; };
+		DAC199E819227D4A004BEA6B /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAC199E619227D4A004BEA6B /* Icon@2x.png */; };
 		DAD0D85A191E7DB30057B3BD /* Juego.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D859191E7DB30057B3BD /* Juego.m */; };
 		DAD0D85D191E7DB40057B3BD /* Tip.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D85C191E7DB40057B3BD /* Tip.m */; };
 		DAD0D860191E7DB40057B3BD /* Ranking.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D85F191E7DB40057B3BD /* Ranking.m */; };
@@ -176,6 +178,8 @@
 		DAC199DE19226E5C004BEA6B /* pepsico.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pepsico.jpg; sourceTree = "<group>"; };
 		DAC199E219227092004BEA6B /* DDMCreditosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMCreditosViewController.h; sourceTree = "<group>"; };
 		DAC199E319227092004BEA6B /* DDMCreditosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMCreditosViewController.m; sourceTree = "<group>"; };
+		DAC199E519227D4A004BEA6B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		DAC199E619227D4A004BEA6B /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		DAD0D858191E7DB30057B3BD /* Juego.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Juego.h; sourceTree = "<group>"; };
 		DAD0D859191E7DB30057B3BD /* Juego.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Juego.m; sourceTree = "<group>"; };
 		DAD0D85B191E7DB40057B3BD /* Tip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tip.h; sourceTree = "<group>"; };
@@ -286,6 +290,8 @@
 				DAC199DE19226E5C004BEA6B /* pepsico.jpg */,
 				DAC199DA19225F61004BEA6B /* guardar.png */,
 				DAC199CE19225741004BEA6B /* 0.png */,
+				DAC199E519227D4A004BEA6B /* Icon.png */,
+				DAC199E619227D4A004BEA6B /* Icon@2x.png */,
 				DAC199CF19225741004BEA6B /* 1.png */,
 				DAC199D019225741004BEA6B /* 2.png */,
 				DAC199D119225741004BEA6B /* 3.png */,
@@ -442,6 +448,7 @@
 				9C500AE0190B9E5000FA0773 /* Instrucciones.gif in Resources */,
 				9C7679AF19140285004A39E3 /* drain.png in Resources */,
 				DAC199D819225741004BEA6B /* 4.png in Resources */,
+				DAC199E819227D4A004BEA6B /* Icon@2x.png in Resources */,
 				C4835168191D591D00C4A919 /* botonSalir.png in Resources */,
 				9C7679BC1914774D004A39E3 /* prog.jpg in Resources */,
 				DAC199D719225741004BEA6B /* 3.png in Resources */,
@@ -464,6 +471,7 @@
 				9C500AF9190B9E5000FA0773 /* iPipe-Info.plist in Resources */,
 				9C500AE2190B9E5000FA0773 /* Play.gif in Resources */,
 				9C7679B919140285004A39E3 /* ur.png in Resources */,
+				DAC199E719227D4A004BEA6B /* Icon.png in Resources */,
 				C483516A191D59CF00C4A919 /* empezar.png in Resources */,
 				9C7679B419140285004A39E3 /* lrw.png in Resources */,
 				DAC199DB19225F61004BEA6B /* guardar.png in Resources */,
