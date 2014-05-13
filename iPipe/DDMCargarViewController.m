@@ -88,6 +88,14 @@
     Juego *j = juegos[indexPath.row];
     cell.nombreLabel.text = j.nombre;
     
+    if(j.state) {
+        NSString *str = j.state;
+        NSError *e;
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData: [str dataUsingEncoding:NSUTF8StringEncoding] options: 0
+                                                               error: &e];
+        cell.puntosLabel.text = [NSString stringWithFormat:@"%@ L", dict[@"wasted"]];
+    }
+    
     return cell;
 }
 

@@ -50,6 +50,7 @@
     
     self.imagenI.image = _instrucciones[instActual][@"imagen"];
     self.instruccionTV.text = _instrucciones[instActual][@"texto"];
+    //[self.instruccionTV sizeToFit];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -86,6 +87,7 @@
     
     self.imagenI.image = _instrucciones[instActual][@"imagen"];
     self.instruccionTV.text = _instrucciones[instActual][@"texto"];
+    //[self.instruccionTV sizeToFit];
 }
 
 - (IBAction)nextPresionado:(id)sender {
@@ -93,5 +95,6 @@
     
     self.imagenI.image = _instrucciones[instActual][@"imagen"];
     self.instruccionTV.text = _instrucciones[instActual][@"texto"];
+    //[self.instruccionTV sizeToFit];
 }
 @end

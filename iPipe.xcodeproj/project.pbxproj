@@ -70,6 +70,11 @@
 		DAC199D719225741004BEA6B /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = DAC199D119225741004BEA6B /* 3.png */; };
 		DAC199D819225741004BEA6B /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = DAC199D219225741004BEA6B /* 4.png */; };
 		DAC199D919225741004BEA6B /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = DAC199D319225741004BEA6B /* 5.png */; };
+		DAC199DB19225F61004BEA6B /* guardar.png in Resources */ = {isa = PBXBuildFile; fileRef = DAC199DA19225F61004BEA6B /* guardar.png */; };
+		DAC199DF19226E5C004BEA6B /* av.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAC199DC19226E5C004BEA6B /* av.jpg */; };
+		DAC199E019226E5C004BEA6B /* tec.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAC199DD19226E5C004BEA6B /* tec.jpg */; };
+		DAC199E119226E5C004BEA6B /* pepsico.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAC199DE19226E5C004BEA6B /* pepsico.jpg */; };
+		DAC199E419227092004BEA6B /* DDMCreditosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC199E319227092004BEA6B /* DDMCreditosViewController.m */; };
 		DAD0D85A191E7DB30057B3BD /* Juego.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D859191E7DB30057B3BD /* Juego.m */; };
 		DAD0D85D191E7DB40057B3BD /* Tip.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D85C191E7DB40057B3BD /* Tip.m */; };
 		DAD0D860191E7DB40057B3BD /* Ranking.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D85F191E7DB40057B3BD /* Ranking.m */; };
@@ -165,6 +170,12 @@
 		DAC199D119225741004BEA6B /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3.png; path = ../3.png; sourceTree = "<group>"; };
 		DAC199D219225741004BEA6B /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 4.png; path = ../4.png; sourceTree = "<group>"; };
 		DAC199D319225741004BEA6B /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 5.png; path = ../5.png; sourceTree = "<group>"; };
+		DAC199DA19225F61004BEA6B /* guardar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = guardar.png; path = ../botones/guardar.png; sourceTree = "<group>"; };
+		DAC199DC19226E5C004BEA6B /* av.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = av.jpg; sourceTree = "<group>"; };
+		DAC199DD19226E5C004BEA6B /* tec.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tec.jpg; sourceTree = "<group>"; };
+		DAC199DE19226E5C004BEA6B /* pepsico.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pepsico.jpg; sourceTree = "<group>"; };
+		DAC199E219227092004BEA6B /* DDMCreditosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMCreditosViewController.h; sourceTree = "<group>"; };
+		DAC199E319227092004BEA6B /* DDMCreditosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMCreditosViewController.m; sourceTree = "<group>"; };
 		DAD0D858191E7DB30057B3BD /* Juego.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Juego.h; sourceTree = "<group>"; };
 		DAD0D859191E7DB30057B3BD /* Juego.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Juego.m; sourceTree = "<group>"; };
 		DAD0D85B191E7DB40057B3BD /* Tip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tip.h; sourceTree = "<group>"; };
@@ -222,6 +233,8 @@
 				9C500AB8190B9E5000FA0773 /* DDMInstruccionesViewController.m */,
 				9C500AB9190B9E5000FA0773 /* DDMjuegoNuevoViewController.h */,
 				9C500ABA190B9E5000FA0773 /* DDMjuegoNuevoViewController.m */,
+				DAC199E219227092004BEA6B /* DDMCreditosViewController.h */,
+				DAC199E319227092004BEA6B /* DDMCreditosViewController.m */,
 				9C500ABB190B9E5000FA0773 /* DDMJuegoViewController.h */,
 				9C500ABC190B9E5000FA0773 /* DDMJuegoViewController.m */,
 				9C500ABD190B9E5000FA0773 /* DDMManejoDB.h */,
@@ -268,6 +281,10 @@
 		9C76799C19140285004A39E3 /* imagenes */ = {
 			isa = PBXGroup;
 			children = (
+				DAC199DC19226E5C004BEA6B /* av.jpg */,
+				DAC199DD19226E5C004BEA6B /* tec.jpg */,
+				DAC199DE19226E5C004BEA6B /* pepsico.jpg */,
+				DAC199DA19225F61004BEA6B /* guardar.png */,
 				DAC199CE19225741004BEA6B /* 0.png */,
 				DAC199CF19225741004BEA6B /* 1.png */,
 				DAC199D019225741004BEA6B /* 2.png */,
@@ -420,6 +437,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAC199E019226E5C004BEA6B /* tec.jpg in Resources */,
 				9C7679B119140285004A39E3 /* faucet.png in Resources */,
 				9C500AE0190B9E5000FA0773 /* Instrucciones.gif in Resources */,
 				9C7679AF19140285004A39E3 /* drain.png in Resources */,
@@ -440,6 +458,7 @@
 				C4835174191D685C00C4A919 /* waterJuego.mp3 in Resources */,
 				9C7679AD19140285004A39E3 /* dlw.png in Resources */,
 				9C500AF8190B9E5000FA0773 /* Images.xcassets in Resources */,
+				DAC199E119226E5C004BEA6B /* pepsico.jpg in Resources */,
 				9C7679B319140285004A39E3 /* lr.png in Resources */,
 				DAC199D919225741004BEA6B /* 5.png in Resources */,
 				9C500AF9190B9E5000FA0773 /* iPipe-Info.plist in Resources */,
@@ -447,8 +466,10 @@
 				9C7679B919140285004A39E3 /* ur.png in Resources */,
 				C483516A191D59CF00C4A919 /* empezar.png in Resources */,
 				9C7679B419140285004A39E3 /* lrw.png in Resources */,
+				DAC199DB19225F61004BEA6B /* guardar.png in Resources */,
 				9C500AE1190B9E5000FA0773 /* iPipe.gif in Resources */,
 				9C7679B719140285004A39E3 /* ul.png in Resources */,
+				DAC199DF19226E5C004BEA6B /* av.jpg in Resources */,
 				9C500ADD190B9E5000FA0773 /* background.gif in Resources */,
 				9C7679B219140285004A39E3 /* fondo.png in Resources */,
 				9C500AFD190B9E5000FA0773 /* Storyboard.storyboard in Resources */,
@@ -485,6 +506,7 @@
 				DAAD95501921A4D8005D16CC /* DDMRankingTableViewCell.m in Sources */,
 				9C500AEC190B9E5000FA0773 /* DDMMenuViewController.m in Sources */,
 				9C500AED190B9E5000FA0773 /* DDMMuestraTipViewController.m in Sources */,
+				DAC199E419227092004BEA6B /* DDMCreditosViewController.m in Sources */,
 				9C500AE7190B9E5000FA0773 /* DDMCargarViewController.m in Sources */,
 				9C500AEB190B9E5000FA0773 /* DDMManejoDB.m in Sources */,
 				DAAD954D1921A339005D16CC /* DDMRankingViewController.m in Sources */,

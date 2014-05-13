@@ -86,7 +86,7 @@
     
     NSDictionary *j = rankings[indexPath.row];
     cell.numNombreL.text = [NSString stringWithFormat:@"%02d. %@", (indexPath.row + 1), j[@"nombre"]];
-    cell.puntosL.text = [j[@"puntos"] stringValue];
+    cell.puntosL.text = [NSString stringWithFormat:@"%@ L", [j[@"puntos"] stringValue]];
     
     return cell;
 }
