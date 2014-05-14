@@ -99,6 +99,9 @@ CGFloat endDistribution[][6] = {
 {
     [super viewDidLoad];
     
+    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeLeft animated:YES];
+
+    
     NSLog(@"juego nombre: %@ dificultad %@ nuevo %@ state %@", juego.nombre, juego.dificultad, juego.new, juego.state);
     // Do any additional setup after loading the view.
     [UIImage imageNamed:@"water.png"];
@@ -154,6 +157,8 @@ CGFloat endDistribution[][6] = {
     
     self.progIV.frame = CGRectMake(0.0, 0.0, 0.0, origenY);
     timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerDisparo:) userInfo:nil repeats:YES];
+    
+    
 }
 
 - (void) nuevoJuego {
@@ -532,17 +537,20 @@ CGFloat endDistribution[][6] = {
     return YES;
 }
 
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
-}
-
--(NSUInteger)supportedInterfaceOrientations{
-    return UIInterfaceOrientationMaskLandscapeRight | UIInterfaceOrientationMaskLandscapeLeft;
-}
-
 - (IBAction)guardarPresionado:(id)sender {
     //NSLog(@"%@", [self gameState]);
     [self saveGameState];
 }
+
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
+    return (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft);
+}
+-(BOOL)shouldAutorotate {
+    return YES;
+}
+- (NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskLandscapeLeft;
+}
+
 @end

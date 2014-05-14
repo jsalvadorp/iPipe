@@ -51,13 +51,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return (interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown || interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
--(NSUInteger)supportedInterfaceOrientations{
-    return UIInterfaceOrientationMaskPortrait;
-}
 
 
 
@@ -71,5 +64,15 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
+    return (toInterfaceOrientation == UIInterfaceOrientationPortrait);
+}
+-(BOOL)shouldAutorotate {
+    return YES;
+}
+- (NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
+}
 
 @end

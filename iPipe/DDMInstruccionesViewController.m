@@ -75,12 +75,6 @@
 */
 
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return (interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown || interfaceOrientation == UIInterfaceOrientationPortrait);
-}
--(NSUInteger)supportedInterfaceOrientations{
-    return UIInterfaceOrientationMaskPortrait;
-}
 
 - (IBAction)backPresionado:(id)sender {
     instActual = (_instrucciones.count + instActual - 1) % _instrucciones.count;
@@ -96,5 +90,15 @@
     self.imagenI.image = _instrucciones[instActual][@"imagen"];
     self.instruccionTV.text = _instrucciones[instActual][@"texto"];
     //[self.instruccionTV sizeToFit];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
+    return (toInterfaceOrientation == UIInterfaceOrientationPortrait);
+}
+-(BOOL)shouldAutorotate {
+    return YES;
+}
+- (NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
 }
 @end
