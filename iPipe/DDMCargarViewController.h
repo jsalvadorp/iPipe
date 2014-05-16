@@ -10,5 +10,4 @@
 
 @interface DDMCargarViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *juegosTV;
-
 @end

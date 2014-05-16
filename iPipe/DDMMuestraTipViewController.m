@@ -9,6 +9,8 @@
 #import "DDMMuestraTipViewController.h"
 #import "DDMManejoDB.h"
 #import "DDMTieneJuego.h"
+#import "DDMCargarViewController.h"
+#import "DDMjuegoNuevoViewController.h"
 
 @interface DDMMuestraTipViewController ()
 
@@ -17,6 +19,7 @@
 @implementation DDMMuestraTipViewController
 
 @synthesize juego;
+@synthesize vistaPrevia;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,7 +38,7 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.gif"]];
     self.tipTxtV.text = [[DDMManejoDB instancia] randomTip].tip;
-    [NSTimer scheduledTimerWithTimeInterval:1.5/*3.0*/ target:self selector:@selector(timerDisparo:) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(timerDisparo:) userInfo:nil repeats:NO];
     [self.cargandoAI startAnimating];
     self.tipTxtV.backgroundColor = [UIColor clearColor];
     NSError *error;
@@ -74,6 +77,7 @@
     
     id<DDMTieneJuego>dest = segue.destinationViewController;
     dest.juego = juego;
+    dest.vistaPrevia = self;
 }
 /**/
 
@@ -85,6 +89,26 @@
 }
 - (NSUInteger)supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskLandscapeLeft;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+    return UIInterfaceOrientationLandscapeLeft;
+}
+
+- (void) salirAlMenu {
+    NSLog(@"sm tip");
+    //[self dismissViewControllerAnimated:NO completion:nil];
+    //[self.vistaPrevia salirAlMenu];
+    /*[self dismissViewControllerAnimated:NO completion:^{
+        [((UINavigationController *)self.presentingViewController) popToRootViewControllerAnimated:YES];
+    }];*/
+    //[((UINavigationController *)self.presentingViewController) popToRootViewControllerAnimated:NO];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [((UINavigationController *)self.presentingViewController) popToRootViewControllerAnimated:NO];
 }
 
 @end

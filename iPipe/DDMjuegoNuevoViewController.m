@@ -85,25 +85,44 @@
             [alert show];
             
         } else {
-        DDMManejoDB *db = [DDMManejoDB instancia];
-        Juego *juego = [db insertarJuego:self.nombreTF.text dificultad:self.dificultadSC.selectedSegmentIndex];
-        id<DDMTieneJuego>dest = segue.destinationViewController;
-        dest.juego = juego;
+            DDMManejoDB *db = [DDMManejoDB instancia];
+            Juego *juego = [db insertarJuego:self.nombreTF.text dificultad:self.dificultadSC.selectedSegmentIndex];
+            id<DDMTieneJuego>dest = segue.destinationViewController;
+            dest.juego = juego;
+            dest.vistaPrevia = self;
         }
         //[self performSegueWithIdentifier: @"SegueToScene1" sender: self];
         }
     
 }
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    return ![self.nombreTF.text isEqualToString:@""];
+}
 /**/
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
+    //NSLog(@"nuevo shouldautorotateto");
     return (toInterfaceOrientation == UIInterfaceOrientationPortrait);
 }
 -(BOOL)shouldAutorotate {
+    //NSLog(@"nuevo shouldautorotate");
     return YES;
 }
 - (NSUInteger)supportedInterfaceOrientations {
+    //NSLog(@"nuevo supported");
     return UIInterfaceOrientationMaskPortrait;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+    return UIInterfaceOrientationPortrait;
+}
+
+
+
+-(void) salirAlMenu {
+    NSLog(@"sm nuevo");
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end

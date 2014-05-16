@@ -85,6 +85,7 @@ CGFloat endDistribution[][6] = {
 @implementation DDMJuegoViewController
 
 @synthesize juego;
+@synthesize vistaPrevia;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -272,7 +273,7 @@ CGFloat endDistribution[][6] = {
 
 - (void) timerDisparo: (NSTimer *) timer {
     wasted += delta;
-    self.puntosL.text = [NSString stringWithFormat:@"%d L/%.2lf L", (int)wasted, (double)max];
+    self.puntosL.text = [NSString stringWithFormat:@"%d / %.2lf litros", (int)wasted, (double)max];
     
     if(wasted > max) {
         [self terminar:FALSE];
@@ -490,7 +491,9 @@ CGFloat endDistribution[][6] = {
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    NSLog(@"alerta fin");
+    [self.vistaPrevia salirAlMenu];
+    NSLog(@"alerta fiwn");
 }
 
 - (void) tap: (UITapGestureRecognizer *)recognizer {
@@ -530,7 +533,9 @@ CGFloat endDistribution[][6] = {
 /**/
 
 - (IBAction)salirPresionado:(id)sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    //[self.navigationController popToRootViewControllerAnimated:YES];
+    
+    [self salirAlMenu];
 }
 
 - (BOOL) prefersStatusBarHidden {
@@ -544,13 +549,32 @@ CGFloat endDistribution[][6] = {
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
+    NSLog(@"juego shouldautorotateto");
     return (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft);
 }
 -(BOOL)shouldAutorotate {
+    NSLog(@"juego shouldautorotate");
     return YES;
 }
 - (NSUInteger)supportedInterfaceOrientations {
+    NSLog(@"juego supported");
     return UIInterfaceOrientationMaskLandscapeLeft;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+    return UIInterfaceOrientationLandscapeLeft;
+}
+
+-(void) viewWillDisappear:(BOOL)animated {
+    [timer invalidate];
+}
+
+-(void) salirAlMenu {
+    NSLog(@"sm juego");
+    NSLog(@"clase pp %@", vistaPrevia);
+    //[self.presentingViewController.presentingViewController.navigationController popToRootViewControllerAnimated:YES];
+    //[self.presentingViewController.presentingViewController dismissViewControllerAnimated:NO completion:nil];
+    [self.vistaPrevia salirAlMenu];
 }
 
 @end

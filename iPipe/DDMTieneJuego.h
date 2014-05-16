@@ -12,5 +12,6 @@
 @protocol DDMTieneJuego <NSObject>
 
 @property (strong, atomic) Juego *juego;
+@property (strong, nonatomic) id vistaPrevia;
 
 @end

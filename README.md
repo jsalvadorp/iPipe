@@ -1,3 +1,6 @@
+Nota: El servidor debe establecerse en iPipe-prefix.pch. Actualmente es localhost. Cuando el cliente tenga listo el servidor, se programara en la aplicacion.
+
+
 iPipe
 =====
 iPipes - Juego del cuidado del agua.

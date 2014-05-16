@@ -1,18 +1,18 @@
 //
-//  DDMCreditosViewController.m
+//  DDMNavigationController.m
 //  iPipe
 //
-//  Created by Salvador Pamanes on 13/05/14.
+//  Created by Salvador Pamanes on 15/05/14.
 //  Copyright (c) 2014 Ivan Diaz. All rights reserved.
 //
 
-#import "DDMCreditosViewController.h"
+#import "DDMNavigationController.h"
 
-@interface DDMCreditosViewController ()
+@interface DDMNavigationController ()
 
 @end
 
-@implementation DDMCreditosViewController
+@implementation DDMNavigationController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,20 +27,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [[self navigationController] setNavigationBarHidden:NO animated:YES];
-
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-
-
--(void)viewDidAppear:(BOOL)animated {
-    [[self navigationController] setNavigationBarHidden:NO animated:YES];
 }
 
 /*
@@ -54,21 +46,30 @@
 }
 */
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
-    NSLog(@"creditos shouldautorotateto");
-    return (toInterfaceOrientation == UIInterfaceOrientationPortrait);
-}
--(BOOL)shouldAutorotate {
-    NSLog(@"creditos shouldautorotate");
-    return YES;
-}
-- (NSUInteger)supportedInterfaceOrientations {
-    NSLog(@"creditos supported");
-    return UIInterfaceOrientationMaskPortrait;
+-(NSUInteger)supportedInterfaceOrientations
+{
+    //NSLog(@"supportedInterfaceOrientations = %d ", [self.topViewController         supportedInterfaceOrientations]);
+    //NSLog(@"navcon supported");
+    return [self.visibleViewController supportedInterfaceOrientations];
 }
 
+-(BOOL)shouldAutorotate
+{
+    return self.visibleViewController.shouldAutorotate;
+}
+
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    // You do not need this method if you are not supporting earlier iOS Versions
+    
+    return [self.visibleViewController shouldAutorotateToInterfaceOrientation:interfaceOrientation];
+}
+
+
+
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
-    return UIInterfaceOrientationPortrait;
+    //NSLog(@"preferred");
+    return self.visibleViewController.preferredInterfaceOrientationForPresentation;
 }
 
 @end

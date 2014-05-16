@@ -20,4 +20,5 @@
 @property (strong, nonatomic) IBOutlet UILabel *puntosL;
 
 @property (nonatomic) AVAudioPlayer * backgroundMusicPlayer;
+
 @end

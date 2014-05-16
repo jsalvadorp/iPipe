@@ -80,6 +80,7 @@
 		DAD0D85A191E7DB30057B3BD /* Juego.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D859191E7DB30057B3BD /* Juego.m */; };
 		DAD0D85D191E7DB40057B3BD /* Tip.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D85C191E7DB40057B3BD /* Tip.m */; };
 		DAD0D860191E7DB40057B3BD /* Ranking.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D85F191E7DB40057B3BD /* Ranking.m */; };
+		DAF3C3BB1925834E006B4527 /* DDMNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF3C3BA1925834E006B4527 /* DDMNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -186,6 +187,8 @@
 		DAD0D85C191E7DB40057B3BD /* Tip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tip.m; sourceTree = "<group>"; };
 		DAD0D85E191E7DB40057B3BD /* Ranking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ranking.h; sourceTree = "<group>"; };
 		DAD0D85F191E7DB40057B3BD /* Ranking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ranking.m; sourceTree = "<group>"; };
+		DAF3C3B91925834E006B4527 /* DDMNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMNavigationController.h; sourceTree = "<group>"; };
+		DAF3C3BA1925834E006B4527 /* DDMNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,6 +260,8 @@
 				9C500AC7190B9E5000FA0773 /* DDMTile.m */,
 				9C500AC8190B9E5000FA0773 /* InfoPlist.strings */,
 				9C500AD2190B9E5000FA0773 /* Images.xcassets */,
+				DAF3C3B91925834E006B4527 /* DDMNavigationController.h */,
+				DAF3C3BA1925834E006B4527 /* DDMNavigationController.m */,
 				9C500AD3190B9E5000FA0773 /* iPipe-Info.plist */,
 				9C500AD4190B9E5000FA0773 /* iPipe-Prefix.pch */,
 				9C500AD7190B9E5000FA0773 /* main.m */,
@@ -520,6 +525,7 @@
 				DAAD954D1921A339005D16CC /* DDMRankingViewController.m in Sources */,
 				DAD0D85A191E7DB30057B3BD /* Juego.m in Sources */,
 				DAD0D85D191E7DB40057B3BD /* Tip.m in Sources */,
+				DAF3C3BB1925834E006B4527 /* DDMNavigationController.m in Sources */,
 				9C500AE9190B9E5000FA0773 /* DDMjuegoNuevoViewController.m in Sources */,
 				9C500AEF190B9E5000FA0773 /* DDMTile.m in Sources */,
 				9C500AE5190B9E5000FA0773 /* DDMAppDelegate.m in Sources */,

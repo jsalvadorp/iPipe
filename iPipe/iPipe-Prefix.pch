@@ -15,5 +15,6 @@
     #import <Foundation/Foundation.h>
 #endif
 
-
+// url del servidor.
+// reemplazar localhost por la dirección del servidor
 #define DDM_SERVIDOR_TIPS @"http://localhost/tip.php?timestamp=%lld"

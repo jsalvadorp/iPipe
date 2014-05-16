@@ -32,9 +32,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     /**/
-    _instrucciones = @[@{@"texto" : @"El agua se está desperdiciando litro por litro. ¡Construye una tubería para cerrar la fuga!",
+    _instrucciones = @[@{@"texto" : @"Este marcador muestra cuántos litros de agua has desperdiciado. ¡Construye una tubería para cerrar la fuga!",
                          @"imagen" : [UIImage imageNamed: @"0.png"]},
-                       @{@"texto" : @"Hay un máximo de agua que puedes desperdiciar. Si te pasas, ¡estás fuera!",
+                       @{@"texto" : @"Hay un máximo de litros de agua que puedes desperdiciar. Si te pasas, ¡estás fuera!",
                          @"imagen" : [UIImage imageNamed: @"1.png"]},
                        @{@"texto" : @"Conecta tu tubería a la llave para rescatar el agua.",
                          @"imagen" : [UIImage imageNamed: @"2.png"]},
@@ -42,7 +42,7 @@
                          @"imagen" : [UIImage imageNamed: @"4.png"]},
                        @{@"texto" : @"Debes llevar el agua a la coladera para reciclarla.",
                          @"imagen" : [UIImage imageNamed: @"3.png"]},
-                       @{@"texto" : @"Si logras llevar el agua a su destino antes de desperdiciarla toda, ¡Ganaste!",
+                       @{@"texto" : @"Si logras llevar el agua a tiempo, ¡Ganaste! ¡Desperdicia lo menos posible para figurar en el ranking!",
                          @"imagen" : [UIImage imageNamed: @"5.png"]}];
     instActual = 0;
     /**/
@@ -93,12 +93,19 @@
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
+    NSLog(@"instrucciones shouldautorotateto");
     return (toInterfaceOrientation == UIInterfaceOrientationPortrait);
 }
 -(BOOL)shouldAutorotate {
+    NSLog(@"instrucciones shouldautorotate");
     return YES;
 }
 - (NSUInteger)supportedInterfaceOrientations {
+    NSLog(@"instrucciones supported");
     return UIInterfaceOrientationMaskPortrait;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+    return UIInterfaceOrientationPortrait;
 }
 @end

@@ -108,13 +108,21 @@
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
+    NSLog(@"ranking shouldautorotateto");
     return (toInterfaceOrientation == UIInterfaceOrientationPortrait);
 }
 -(BOOL)shouldAutorotate {
+     NSLog(@"ranking shouldautorotate");
     return YES;
 }
 - (NSUInteger)supportedInterfaceOrientations {
+     NSLog(@"ranking supported");
     return UIInterfaceOrientationMaskPortrait;
+}
+
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+    return UIInterfaceOrientationPortrait;
 }
 
 @end

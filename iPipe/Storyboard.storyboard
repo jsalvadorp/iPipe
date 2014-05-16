@@ -144,7 +144,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EHG-4e-Ede" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2168" y="162"/>
+            <point key="canvasLocation" x="1552" y="-378"/>
         </scene>
         <!--Cargar View Controller - Cargar Juego-->
         <scene sceneID="BgL-yl-uCM">
@@ -158,31 +158,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="87" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6Oc-62-dvD">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="111" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6Oc-62-dvD">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="87" id="9eG-Q3-LhH" customClass="DDMCargarCellTableViewCell">
-                                        <rect key="frame" x="0.0" y="86" width="320" height="87"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="111" id="9eG-Q3-LhH" customClass="DDMCargarCellTableViewCell">
+                                        <rect key="frame" x="0.0" y="86" width="320" height="111"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9eG-Q3-LhH" id="gYV-Wp-eLC">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="86"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fa5-8U-vUm">
-                                                    <rect key="frame" x="257" y="14" width="17" height="0.0"/>
+                                                    <rect key="frame" x="257" y="14" width="17" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVO-f7-hzy">
                                                     <rect key="frame" x="20" y="20" width="177" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XhH-k9-M9W">
-                                                    <rect key="frame" x="20" y="45" width="177" height="21"/>
+                                                    <rect key="frame" x="20" y="78" width="247" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWf-ji-34E">
+                                                    <rect key="frame" x="20" y="49" width="242" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -191,6 +198,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="dificultadL" destination="eWf-ji-34E" id="KMK-9d-gqI"/>
                                             <outlet property="imagenCargar" destination="Fa5-8U-vUm" id="5yA-eC-zaL"/>
                                             <outlet property="nombreLabel" destination="MVO-f7-hzy" id="EbS-LA-u3s"/>
                                             <outlet property="puntosLabel" destination="XhH-k9-M9W" id="krH-II-j0M"/>
@@ -206,12 +214,12 @@
                     <connections>
                         <outlet property="juegosTV" destination="6Oc-62-dvD" id="lZm-cs-EwQ"/>
                         <segue destination="rHM-a7-8Tt" kind="push" identifier="nuevo" id="to2-eF-HUo"/>
-                        <segue destination="AoH-1p-fdg" kind="push" identifier="tip" id="Vsb-ih-MNo"/>
+                        <segue destination="AoH-1p-fdg" kind="modal" identifier="tip" id="Vsb-ih-MNo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9uU-SD-T15" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="282" y="-845"/>
+            <point key="canvasLocation" x="566" y="-1221"/>
         </scene>
         <!--Creditos View Controller - Créditos-->
         <scene sceneID="FGG-r7-vaC">
@@ -268,7 +276,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QqA-Yo-b3x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="353" y="514"/>
+            <point key="canvasLocation" x="729" y="506"/>
         </scene>
         <!--Ranking View Controller - Ranking-->
         <scene sceneID="b7n-ll-OzG">
@@ -326,9 +334,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kN4-UI-RrV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="829" y="86"/>
+            <point key="canvasLocation" x="1441" y="398"/>
         </scene>
-        <!--Mjuego Nuevo View Controller-->
+        <!--Mjuego Nuevo View Controller - Juego Nuevo-->
         <scene sceneID="WZC-fn-bdw">
             <objects>
                 <viewController id="rHM-a7-8Tt" customClass="DDMjuegoNuevoViewController" sceneMemberID="viewController">
@@ -347,7 +355,7 @@
                                     <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="AoH-1p-fdg" kind="push" identifier="tip" id="z85-ID-xBP"/>
+                                    <segue destination="AoH-1p-fdg" kind="modal" identifier="tip" id="z85-ID-xBP"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nombre: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPe-BJ-6zT">
@@ -356,14 +364,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Selecciona el nivel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58j-jl-v8S">
-                                <rect key="frame" x="91" y="175" width="142" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Selecciona el nivel:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58j-jl-v8S">
+                                <rect key="frame" x="91" y="175" width="147" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6T3-kj-k66">
-                                <rect key="frame" x="98" y="100" width="118" height="30"/>
+                                <rect key="frame" x="98" y="100" width="202" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -374,19 +382,13 @@
                                 <segments>
                                     <segment title="Simple"/>
                                     <segment title="Medio"/>
-                                    <segment title="Avanzada"/>
+                                    <segment title="Avanzado"/>
                                 </segments>
                             </segmentedControl>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Juego Nuevo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RfB-hT-i5I">
-                                <rect key="frame" x="103" y="30" width="102" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Il3-Db-Rd1"/>
+                    <navigationItem key="navigationItem" title="Juego Nuevo" id="Il3-Db-Rd1"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="dificultadSC" destination="p4N-i8-hy8" id="WJT-cv-KME"/>
@@ -396,7 +398,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DOU-iH-VTe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="829" y="-556"/>
+            <point key="canvasLocation" x="989" y="-768"/>
         </scene>
         <!--Muestra Tip View Controller - iPipe-->
         <scene sceneID="qgd-rh-J79">
@@ -439,12 +441,12 @@
                     <connections>
                         <outlet property="cargandoAI" destination="kcP-Ry-Bba" id="tgM-EL-x6h"/>
                         <outlet property="tipTxtV" destination="FSe-vY-BhR" id="RZG-ut-xza"/>
-                        <segue destination="ax5-8a-oOW" kind="push" identifier="juego" id="bA0-WY-6gm"/>
+                        <segue destination="ax5-8a-oOW" kind="modal" identifier="juego" id="bA0-WY-6gm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nkj-6w-fjz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1364" y="-767"/>
+            <point key="canvasLocation" x="1364" y="-1103"/>
         </scene>
         <!--Juego View Controller-->
         <scene sceneID="Knx-Kt-1PT">
@@ -530,12 +532,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Dt-lL-zRR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1309" y="-234"/>
+            <point key="canvasLocation" x="2149" y="-570"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0fN-7H-81K">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="N17-4x-gqL" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="N17-4x-gqL" customClass="DDMNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fly-MN-b9u">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -573,7 +575,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="009-Y8-Jhv"/>
-        <segue reference="Vsb-ih-MNo"/>
+        <segue reference="to2-eF-HUo"/>
+        <segue reference="z85-ID-xBP"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -42,7 +42,14 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated {
-    [[self navigationController] setNavigationBarHidden:YES animated:YES];
+    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+    if (orientation != UIDeviceOrientationPortrait) {
+        [self presentViewController:[UIViewController new] animated:NO completion:NULL];
+        [self dismissViewControllerAnimated:NO completion:NULL];
+        
+    }
+    
+    [[self navigationController] setNavigationBarHidden:YES animated:NO];
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,13 +73,20 @@
 */
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
+    //NSLog(@"menu shhouldautorotateto");
     return (toInterfaceOrientation == UIInterfaceOrientationPortrait);
 }
 -(BOOL)shouldAutorotate {
+    //NSLog(@"menu shouldautorotate");
     return YES;
 }
 - (NSUInteger)supportedInterfaceOrientations {
+    //NSLog(@"menu supported");
     return UIInterfaceOrientationMaskPortrait;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+    return UIInterfaceOrientationPortrait;
 }
 
 @end

@@ -12,6 +12,8 @@
 #import "DDMTieneJuego.h"
 #import "Juego.h"
 
+#import "DDMjuegoNuevoViewController.h"
+
 // la primera celda corresponde a un juego nuevo
 // las demas a los juegos guardados
 
@@ -77,15 +79,22 @@
         cell.nombreLabel.text = j.nombre;
     }*/
     
+    
+    
     Juego *j = juegos[indexPath.row];
     cell.nombreLabel.text = j.nombre;
+    cell.dificultadL.text = [j.dificultad isEqualToValue:@0] ? @"Simple"
+                        : [j.dificultad isEqualToValue:@1] ? @"Medio"
+                        : @"Avanzado";
     
     if(j.state) {
         NSString *str = j.state;
         NSError *e;
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData: [str dataUsingEncoding:NSUTF8StringEncoding] options: 0
                                                                error: &e];
-        cell.puntosLabel.text = [NSString stringWithFormat:@"%@ L", dict[@"wasted"]];
+        cell.puntosLabel.text = [NSString stringWithFormat:@"%@ litros desperdiciados", dict[@"wasted"]];
+    } else {
+         cell.puntosLabel.text = @"No has guardado este juego.";
     }
     
     return cell;
@@ -123,18 +132,31 @@
         NSLog(@"row %ld", (long)indexPath.row);
         id<DDMTieneJuego> dest = segue.destinationViewController;
         dest.juego = juegos[indexPath.row];
+        dest.vistaPrevia = self;
     }
 }
 /**/
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
+    NSLog(@"cargar shouldautorotateto");
     return (toInterfaceOrientation == UIInterfaceOrientationPortrait);
 }
 -(BOOL)shouldAutorotate {
+    NSLog(@"cargar shouldautorotate");
     return YES;
 }
 - (NSUInteger)supportedInterfaceOrientations {
+    NSLog(@"cargar supported");
     return UIInterfaceOrientationMaskPortrait;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+    return UIInterfaceOrientationPortrait;
+}
+
+-(void) salirAlMenu {
+    NSLog(@"sm cargar");
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end

@@ -11,6 +11,7 @@
 @interface DDMCargarCellTableViewCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *nombreLabel;
 @property (strong, nonatomic) IBOutlet UILabel *puntosLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dificultadL;
 @property (strong, nonatomic) IBOutlet UIImageView *imagenCargar;
 
 @end
