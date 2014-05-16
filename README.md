@@ -24,12 +24,12 @@ iPipes - Juego del cuidado del agua.
 Authors:
 
    ITESM representatives
-	* Ing. Martha Sordia Salinas <msordia@itesm.mx>
-        * Dr. Juan Arturo Nolazco Flores <jnolazco@itesm.mx>
- 	* Ing. Maria Isabel Cabrera Cancino <marisa.cabrera@tecvirtual.mx>
+* Ing. Martha Sordia Salinas <msordia@itesm.mx>
+* Dr. Juan Arturo Nolazco Flores <jnolazco@itesm.mx>
+* Ing. Maria Isabel Cabrera Cancino <marisa.cabrera@tecvirtual.mx>
 
 
    ITESM students
-	* Iván Díaz ivandiazmtz@gmail.com
-	* Salvador Pámanes s.pamanes@gmail.com
-	* Eugenio Martínez eugeniomartinez92@gmail.com
+* Iván Díaz ivandiazmtz@gmail.com
+* Salvador Pámanes s.pamanes@gmail.com
+* Eugenio Martínez eugeniomartinez92@gmail.com
