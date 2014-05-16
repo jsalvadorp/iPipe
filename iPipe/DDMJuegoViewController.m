@@ -273,12 +273,12 @@ CGFloat endDistribution[][6] = {
 
 - (void) timerDisparo: (NSTimer *) timer {
     wasted += delta;
-    self.puntosL.text = [NSString stringWithFormat:@"%d / %.2lf litros", (int)wasted, (double)max];
+    self.puntosL.text = [NSString stringWithFormat:@"%d / %d litros", (int)wasted, (int)max];
     
     if(wasted > max) {
         [self terminar:FALSE];
     } else {
-        self.progIV.frame = CGRectMake(0.0, 0.0, 7 * gridSize * (wasted / max), origenY);
+        self.progIV.frame = CGRectMake(0.0, 0.0, (width + 1) * gridSize * (wasted / max), origenY);
     }
 }
 

@@ -246,7 +246,7 @@
         }
     }
 
-    
+    NSLog(@"DDM SERVIDOR");
     
     NSString *url = [[NSString alloc] initWithFormat:DDM_SERVIDOR_TIPS, ultimaActualizacion];
     url = [url stringByReplacingOccurrencesOfString:@" " withString:@"+"];
@@ -285,7 +285,10 @@
     NSError *error;
     NSArray *datos = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
     
+    NSLog(@"didfinishload");
+    
     for(NSDictionary *d in datos) {
+        NSLog(@"itip %@", d[@"tip"]);
         [self insertarTip:d[@"tip"] conTiempo:[d[@"timestamp"] longLongValue]];
     }
 }

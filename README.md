@@ -1,4 +1,4 @@
-Nota: El servidor debe establecerse en iPipe-prefix.pch. Actualmente es localhost. Cuando el cliente tenga listo el servidor, se programara en la aplicacion.
+Nota: El servidor debe establecerse en iPipe-prefix.pch. Actualmente es localhost. Cuando el cliente tenga listo el servidor, se programara en la aplicacion. Se debe correr el archivo sql en la base de datos local MySQL, y poner los phps y htmls en la raíz del servidor.
 
 
 iPipe
@@ -24,13 +24,12 @@ iPipes - Juego del cuidado del agua.
 Authors:
 
    ITESM representatives
-	Ing. Martha Sordia Salinas <msordia@itesm.mx>
-        Dr. Juan Arturo Nolazco Flores <jnolazco@itesm.mx>
-
-	Ing. Maria Isabel Cabrera Cancino <marisa.cabrera@tecvirtual.mx>
+	* Ing. Martha Sordia Salinas <msordia@itesm.mx>
+        * Dr. Juan Arturo Nolazco Flores <jnolazco@itesm.mx>
+ 	* Ing. Maria Isabel Cabrera Cancino <marisa.cabrera@tecvirtual.mx>
 
 
    ITESM students
-	Iván Díaz ivandiazmtz@gmail.com
-	Salvador Pámanes s.pamanes@gmail.com
-	Eugenio Martínez eugeniomartinez92@gmail.com
+	* Iván Díaz ivandiazmtz@gmail.com
+	* Salvador Pámanes s.pamanes@gmail.com
+	* Eugenio Martínez eugeniomartinez92@gmail.com
